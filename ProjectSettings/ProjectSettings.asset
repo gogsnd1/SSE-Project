@@ -915,11 +915,11 @@ PlayerSettings:
   captureStartupLogs: {}
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
-  cloudProjectId: 8d72092f-c91e-4eea-8b8e-d326f3a8fc14
+  cloudProjectId: fcb6a1ef-1445-40cc-873b-872df080919a
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: SSE The Quiz
-  organizationId: senileterror462
+  projectName: SSE-Project
+  organizationId: aclouden1748
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   hmiLoadingImage: {fileID: 0}
