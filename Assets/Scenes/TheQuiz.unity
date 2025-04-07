@@ -525,6 +525,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bed
       objectReference: {fileID: 0}
+    - target: {fileID: 1394317259472035525, guid: af0b2d5fbb0c98842b05fe9bad8142ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 36bc39afb37452043bed4b46d1ae46d7, type: 2}
+    - target: {fileID: 4323123964822423801, guid: af0b2d5fbb0c98842b05fe9bad8142ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 449acbec217233048906001a4304de04, type: 2}
+    - target: {fileID: 6705874066542418145, guid: af0b2d5fbb0c98842b05fe9bad8142ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 78117f041681bda49ac153786b7d0d9a, type: 2}
+    - target: {fileID: 6705874066542418145, guid: af0b2d5fbb0c98842b05fe9bad8142ef, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: be84edfb4b206074f8cdc89c01c55c4d, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -578,6 +594,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2357884022608881519, guid: 9cc5151af3150ce46bf679b50406dad9, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 1338d3dacc3a7ed41b5a3d7e445d2974, type: 2}
+    - target: {fileID: -2357884022608881519, guid: 9cc5151af3150ce46bf679b50406dad9, type: 3}
+      propertyPath: 'm_Materials.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3d48638e49f199e4985dcf25576f6014, type: 2}
+    - target: {fileID: -305091885687274788, guid: 9cc5151af3150ce46bf679b50406dad9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: c9bb5f05c2f18654e8b1f289b4adcf86, type: 2}
     - target: {fileID: 919132149155446097, guid: 9cc5151af3150ce46bf679b50406dad9, type: 3}
       propertyPath: m_Name
       value: Room
