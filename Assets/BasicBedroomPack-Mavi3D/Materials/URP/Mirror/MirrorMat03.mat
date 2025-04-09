@@ -40,6 +40,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Glossiness: 0.25
+    - _QueueControl: 0
     m_Colors:
     - _Color: {r: 0.1294117, g: 0.12549013, b: 0.07450978, a: 1}
   m_BuildTextureStacks: []
