@@ -13,7 +13,7 @@ class Program
 
     static void Main()
     {
-        Console.WriteLine("🧠 Welcome to the Secure Login System");
+        Console.WriteLine("Welcome to the Secure Login System");
 
         while (true)
         {
@@ -33,12 +33,12 @@ class Program
                 case "2": Login(); break;
                 case "3": GuestLogin(); break;
                 case "4": return;
-                default: Console.WriteLine("❌ Invalid option."); break;
+                default: Console.WriteLine(" :( Invalid option."); break;
             }
         }
     }
 
-    // 🔐 Register a new user
+    // Register a new user
     static void Register()
     {
         Console.Write("Enter username: ");
@@ -50,14 +50,14 @@ class Program
         // Password strength check
         if (password.Length < 10)
         {
-            Console.WriteLine("❌ Password too short.");
+            Console.WriteLine("Password too short.");
             return;
         }
 
         // Prevent duplicate usernames
         if (userDatabase.ContainsKey(username))
         {
-            Console.WriteLine("❌ Username already exists.");
+            Console.WriteLine("Username already exists.");
             return;
         }
 
@@ -67,10 +67,10 @@ class Program
         Console.WriteLine($"[DEBUG] Hashed password for {username}: {hashed}");
 
 
-        Console.WriteLine($"✅ Registered {username} successfully.");
+        Console.WriteLine($"Registered {username} successfully!");
     }
 
-    // 🔑 Login a user
+    // Login a user
     static void Login()
     {
         Console.Write("Enter username: ");
@@ -84,7 +84,7 @@ class Program
 
         Console.WriteLine($"[DEBUG] Hashed password entered: {hashed}");
 
-         // 🔍 Show stored hash (if user exists)
+         // Show stored hash (if user exists)
         if (userDatabase.ContainsKey(username))
         {
             Console.WriteLine($"[DEBUG] Stored hash for {username}: {userDatabase[username]}");
@@ -94,23 +94,23 @@ class Program
         if (userDatabase.ContainsKey(username) && userDatabase[username] == hashed)
         {
             currentUsername = username;
-            Console.WriteLine($"✅ Welcome back, {currentUsername}!");
+            Console.WriteLine($":) Welcome back, {currentUsername}!");
         }
         else
         {
-            Console.WriteLine("❌ Invalid login.");
+            Console.WriteLine(" :( Invalid Login.");
         }
     }
 
-    // 👤 Guest login with random username
+    // Guest login with random username
     static void GuestLogin()
     {
         Random rnd = new Random();
         currentUsername = "Guest_" + rnd.Next(1000, 9999);
-        Console.WriteLine($"👋 You're logged in as {currentUsername}.");
+        Console.WriteLine($"You're logged in as {currentUsername}!");
     }
 
-    // 🔐 SHA-256 password hashing function
+    // SHA-256 password hashing function
     static string HashPassword(string password)
     {
         // Convert the password into byte array
