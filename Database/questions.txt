@@ -1,0 +1,179 @@
+What is phishing?
+A. Downloading files from the app store
+B. Sending deceptive messages to steal information ✅
+C. Tracking location with GPS
+D. Connecting to Wi-Fi
+
+Which of these is a strong password?
+A. 12345678
+B. mydog123
+C. P@ssw0rd!321 ✅
+D. qwerty
+
+What is the main purpose of two-factor authentication?
+A. Speed up logins
+B. Require your location
+C. Add an extra layer of security ✅
+D. Save passwords for you
+
+What should you do if you receive an email from your “bank” asking for your password?
+A. Reply with your info
+B. Click the link to verify
+C. Delete the email and report it ✅
+D. Call your friend
+
+What is malware?
+A. A harmless app
+B. A security patch
+C. Malicious software meant to harm your device ✅
+D. A type of mobile phone
+
+Which network is safest to connect to?
+A. Any public Wi-Fi
+B. “FreeAirportWiFi”
+C. Your personal password-protected home Wi-Fi ✅
+D. Open hotspots at coffee shops
+
+When downloading apps, what should you check first?
+A. Color of the icon
+B. Number of downloads
+C. App permissions and developer legitimacy ✅
+D. Font style
+
+What is a VPN used for?
+A. Viewing videos faster
+B. Tracking users
+C. Encrypting your online activity ✅
+D. Deleting cookies
+
+What can happen if your phone gets jailbroken or rooted?
+A. Longer battery life
+B. More secure apps
+C. Exposes device to major security risks ✅
+D. Improves camera quality
+
+Why are app permissions important to check?
+A. To customize icons
+B. They can reveal what data an app accesses ✅
+C. For fun
+D. They speed up the phone
+
+What should you do after installing a new app?
+A. Share it with everyone
+B. Restart your phone
+C. Review and adjust its permissions ✅
+D. Disable Wi-Fi
+
+What is smishing?
+A. Phishing over SMS ✅
+B. Breaking your SIM card
+C. Email spamming
+D. Malware detection tool
+
+Why should you avoid using the same password across accounts?
+A. It makes logins faster
+B. Easier to remember
+C. One breach can compromise all accounts ✅
+D. It confuses hackers
+
+Which of the following should be updated regularly?
+A. Wallpapers
+B. Ringtones
+C. Operating system and apps ✅
+D. Contacts
+
+Which is NOT a good practice for mobile security?
+A. Use 2FA
+B. Keep phone locked
+C. Use public Wi-Fi for banking ✅
+D. Download apps from official stores
+
+Biometric authentication includes:
+A. Voice memos
+B. Facial recognition ✅
+C. Email login
+D. Keyboard patterns
+
+Which of the following might indicate a malicious app?
+A. Too many 5-star reviews
+B. Requests excessive permissions ✅
+C. Bright icon
+D. Too many downloads
+
+Why are software updates important?
+A. They look nicer
+B. Make the phone lighter
+C. Patch security vulnerabilities ✅
+D. Remove games
+
+What’s one risk of using outdated apps?
+A. Lower performance
+B. Glitchy design
+C. Known security holes may be exploited ✅
+D. Lower screen brightness
+
+What should you do if your device is lost or stolen?
+A. Nothing
+B. Wait for it to return
+C. Use remote wipe or tracking features ✅
+D. Buy a new phone
+
+Bluetooth should be:
+A. Always on
+B. Used during banking
+C. Left on when in public
+D. Turned off when not in use ✅
+
+QR codes can be:
+A. Only for menus
+B. Safe in every context
+C. Used to redirect to malicious websites ✅
+D. Virus-proof
+
+Should you store passwords in plain text on your phone?
+A. Yes
+B. Only for email
+C. No ✅
+D. Only if encrypted
+
+What’s a good way to remember complex passwords?
+A. Write them on your lock screen
+B. Use a password manager ✅
+C. Use pet names
+D. Don't change them
+
+A fake app can:
+A. Help your phone
+B. Steal your data ✅
+C. Improve connection
+D. Clean your screen
+
+Public charging stations can be risky because:
+A. They charge slow
+B. Someone could take your phone
+C. They may carry malware (juice jacking) ✅
+D. They use USB-C
+
+What’s shoulder surfing?
+A. Physical surfing
+B. Watching someone’s screen to steal info ✅
+C. Using dual monitors
+D. A screen protector brand
+
+A good practice for mobile security is:
+A. Leaving the device unlocked
+B. Installing unverified APKs
+C. Backing up data regularly ✅
+D. Sharing passwords with friends
+
+The best place to download apps is:
+A. Any website
+B. Torrent site
+C. App Store or Google Play ✅
+D. Ads
+
+What should you do with suspicious links in messages?
+A. Forward them
+B. Bookmark them
+C. Open to see what they are
+D. Do not click and report them ✅
