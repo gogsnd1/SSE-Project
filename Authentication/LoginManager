@@ -1,0 +1,191 @@
+using UnityEngine;
+using TMPro;
+using System.Collections;
+using System.Text;
+using System.Security.Cryptography;
+using Mono.Data.Sqlite;      //Required to work with SQLite
+using System.Data;
+using System.IO;
+
+public class LoginManager : MonoBehaviour
+{
+    [Header("UI Elements")]
+    public TMP_InputField usernameInput;         //Input field for username
+    public TMP_InputField passwordInput;         //Input field for password
+    public TextMeshProUGUI feedbackText;         //Text to show feedback messages
+
+    private string dbPath;                       //Path to the SQLite database
+    private Coroutine feedbackCoroutine;         //Used to control fade-out messages
+
+    void Start()
+    {
+        //Set the full path to the SQLite database inside StreamingAssets
+        dbPath = "URI=file:" + Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite");
+
+        //Optional welcome message on start
+        ShowFadingFeedback("  'Welcome to the login system!'");
+    }
+
+    //Called when user presses "Sign In"
+    public void OnLogin()
+    {
+        string username = usernameInput.text.Trim();  //Remove spaces
+        string password = passwordInput.text;
+
+        //Check if fields are empty
+        if (username == "" || password == "")
+        {
+            ShowPersistentFeedback(" 'Please enter both username and password.'");
+            return;
+        }
+
+        //Hash the password before comparing it with the DB
+        string hashed = HashPassword(password);9
+
+        //Connect to the SQLite database
+        using (var conn = new SqliteConnection(dbPath))
+        {
+            conn.Open();
+
+            //Prepare SQL command to check if user with this username & password exists
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = "SELECT COUNT(*) FROM users WHERE user_username = @username AND user_password = @password";
+            cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@password", hashed);
+
+            //Execute and read result
+            int count = System.Convert.ToInt32(cmd.ExecuteScalar());
+
+            if (count > 0)
+            {
+                ShowFadingFeedback($" :) Welcome back, {username}!");
+                //TODO: Move to main menu, load player data, etc.
+            }
+            else
+            {
+                ShowPersistentFeedback(" :( Invalid username or password.");
+            }
+
+            conn.Close();
+        }
+    }
+
+    //Called when user presses "Sign Up"
+    public void OnRegister()
+    {
+        string username = usernameInput.text.Trim();
+        string password = passwordInput.text;
+
+        //Validation checks
+        if (username == "" || password == "")
+        {
+            ShowPersistentFeedback(" 'Username and password can't be empty.'");
+            return;
+        }
+
+        if (password.Length < 10)
+        {
+            ShowPersistentFeedback("'Password must be at least 10 characters.'");
+            return;
+        }
+
+        string hashed = HashPassword(password);
+
+        using (var conn = new SqliteConnection(dbPath))
+        {
+            conn.Open();
+
+            //Checks if username already exists
+            var check = conn.CreateCommand();
+            check.CommandText = "SELECT COUNT(*) FROM users WHERE user_username = @username";
+            check.Parameters.AddWithValue("@username", username);
+            int exists = System.Convert.ToInt32(check.ExecuteScalar());
+
+            if (exists > 0)
+            {
+                ShowPersistentFeedback(" :( Username already exists.");
+                return;
+            }
+
+            //Insert new user into database
+            var insert = conn.CreateCommand();
+            insert.CommandText = "INSERT INTO users (user_username, user_password) VALUES (@username, @password)";
+            insert.Parameters.AddWithValue("@username", username);
+            insert.Parameters.AddWithValue("@password", hashed);
+            insert.ExecuteNonQuery();
+
+            ShowFadingFeedback($" :) Registered {username} successfully!");
+            conn.Close();
+        }
+    }
+
+    //Called when user presses "Play as Guest"
+    public void OnGuestLogin()
+    {
+        //Create a random guest name
+        string guestUsername = "Guest_" + UnityEngine.Random.Range(1000, 9999);
+
+        ShowFadingFeedback($" :) You're logged in as {guestUsername}");
+        //TODO: Use temporary session, skip saving to DB
+    }
+
+    //Used for temporary feedback that fades out (e.g., success messages)
+    private void ShowFadingFeedback(string message, float delay = 2f, float fadeDuration = 1f)
+    {
+        feedbackText.text = message;
+        feedbackText.alpha = 1f;
+
+        //Stop old fade if it's running
+        if (feedbackCoroutine != null)
+            StopCoroutine(feedbackCoroutine);
+
+        //Start new fade coroutine
+        feedbackCoroutine = StartCoroutine(FadeFeedbackAfterDelay(delay, fadeDuration));
+    }
+
+    //Used for persistent messages (e.g., errors) that stay until user acts
+    private void ShowPersistentFeedback(string message)
+    {
+        if (feedbackCoroutine != null)
+            StopCoroutine(feedbackCoroutine);
+
+        feedbackText.text = message;
+        feedbackText.alpha = 1f;
+    }
+
+    //Coroutine to fade out feedback text smoothly
+    private IEnumerator FadeFeedbackAfterDelay(float delay, float fadeDuration)
+    {
+        yield return new WaitForSeconds(delay);
+
+        float elapsed = 0f;
+        float startAlpha = feedbackText.alpha;
+
+        //Fade out over time
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            feedbackText.alpha = Mathf.Lerp(startAlpha, 0f, elapsed / fadeDuration);
+            yield return null;
+        }
+
+        feedbackText.alpha = 0f; //Fully transparent at end
+    }
+
+    //Securely hash the password using SHA-256
+    private string HashPassword(string password)
+    {
+        byte[] bytes = Encoding.UTF8.GetBytes(password);
+
+        using (SHA256 sha256 = SHA256.Create())
+        {
+            byte[] hash = sha256.ComputeHash(bytes);
+
+            StringBuilder sb = new StringBuilder();
+            foreach (byte b in hash)
+                sb.Append(b.ToString("x2"));  //Convert byte to 2-digit hex
+
+            return sb.ToString(); //Final hashed password
+        }
+    }
+}
