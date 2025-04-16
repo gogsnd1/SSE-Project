@@ -1,4 +1,4 @@
-Shader "MatthewGuz/BlackWhiteFilter_URP"
+Shader "MatthewGuz/BlackWhiteNoir_URP"
 {
     Properties
     {
@@ -6,18 +6,20 @@ Shader "MatthewGuz/BlackWhiteFilter_URP"
 
     SubShader
     {
-        Tags { "RenderPipeline" = "UniversalPipeline" "RenderType" = "Opaque" "Queue" = "Geometry" }
-        
+        Tags { "RenderPipeline" = "UniversalPipeline" "RenderType" = "Transparent" "Queue" = "Transparent" }
+        Blend SrcAlpha OneMinusSrcAlpha
+        ZWrite Off
+
         Pass
         {
             Name "ForwardLit"
             Tags { "LightMode" = "UniversalForward" }
-            
+
             HLSLPROGRAM
             #pragma vertex vert
             #pragma fragment frag
             #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
-            
+
             struct Attributes
             {
                 float4 positionOS : POSITION;
@@ -30,10 +32,10 @@ Shader "MatthewGuz/BlackWhiteFilter_URP"
                 float2 uv : TEXCOORD0;
                 float4 screenPos : TEXCOORD1;
             };
-            
+
             TEXTURE2D_X(_CameraOpaqueTexture);
             SAMPLER(sampler_CameraOpaqueTexture);
-            
+
             float3 RGBToHSV(float3 c)
             {
                 float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -52,22 +54,29 @@ Shader "MatthewGuz/BlackWhiteFilter_URP"
                 OUT.screenPos = ComputeScreenPos(OUT.positionHCS);
                 return OUT;
             }
-            
+
             half4 frag(Varyings IN) : SV_Target
             {
                 float2 screenUV = IN.screenPos.xy / IN.screenPos.w;
                 float4 screenColor = SAMPLE_TEXTURE2D_X(_CameraOpaqueTexture, sampler_CameraOpaqueTexture, screenUV);
+
                 float3 hsv = RGBToHSV(screenColor.rgb);
-                
-                float4 color7 = float4(0, 0, 0, 0);
-                float4 color8 = float4(0.07417665, 0.07417665, 0.07417665, 0);
-                float4 color16 = float4(0.280335, 0.280335, 0.280335, 0);
-                float4 color20 = float4(0.957614, 0.957614, 0.957614, 0);
-                
-                float4 finalColor = (hsv.z < 0.3 ? (hsv.z < 0.08 ? (hsv.z < 0.05 ? color7 : color8) : color16) : color20);
+
+                // Create grayscale output tones — grainy noir style
+                float4 color7 = float4(0.0, 0.0, 0.0, 0.8);          // Deep black
+                float4 color8 = float4(0.1, 0.1, 0.1, 0.8);          // Dim charcoal
+                float4 color16 = float4(0.3, 0.3, 0.3, 0.8);         // Mid gray
+                float4 color20 = float4(0.95, 0.95, 0.95, 0.8);      // Nearly white
+
+                float4 finalColor = (hsv.z < 0.3 ?
+                                        (hsv.z < 0.08 ?
+                                            (hsv.z < 0.05 ? color7 : color8)
+                                        : color16)
+                                    : color20);
+
                 return finalColor;
             }
-            
+
             ENDHLSL
         }
     }
