@@ -1,7 +1,11 @@
-Shader "MatthewGuz/BlackWhiteNoir_URP"
+Shader "Joey/BlackWhiteNoir_URP"
 {
     Properties
     {
+        _GrainIntensity("Grain Intensity", Range(0.0, 1.0)) = 0.5
+        _DarkThreshold("Dark Threshold", Range(0.0, 0.3)) = 0.08
+        _MidThreshold("Mid Threshold", Range(0.0, 0.5)) = 0.3
+        _Alpha("Overall Transparency", Range(0.0, 1.0)) = 0.8
     }
 
     SubShader
@@ -36,6 +40,11 @@ Shader "MatthewGuz/BlackWhiteNoir_URP"
             TEXTURE2D_X(_CameraOpaqueTexture);
             SAMPLER(sampler_CameraOpaqueTexture);
 
+            float _GrainIntensity;
+            float _DarkThreshold;
+            float _MidThreshold;
+            float _Alpha;
+
             float3 RGBToHSV(float3 c)
             {
                 float4 K = float4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);
@@ -44,6 +53,11 @@ Shader "MatthewGuz/BlackWhiteNoir_URP"
                 float d = q.x - min(q.w, q.y);
                 float e = 1.0e-10;
                 return float3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);
+            }
+
+            float random(float2 co)
+            {
+                return frac(sin(dot(co.xy, float2(12.9898, 78.233))) * 43758.5453);
             }
 
             Varyings vert(Attributes IN)
@@ -61,18 +75,20 @@ Shader "MatthewGuz/BlackWhiteNoir_URP"
                 float4 screenColor = SAMPLE_TEXTURE2D_X(_CameraOpaqueTexture, sampler_CameraOpaqueTexture, screenUV);
 
                 float3 hsv = RGBToHSV(screenColor.rgb);
+                float grain = (random(screenUV * _Time.y * 60.0) - 0.5) * _GrainIntensity;
 
-                // Create grayscale output tones — grainy noir style
-                float4 color7 = float4(0.0, 0.0, 0.0, 0.8);          // Deep black
-                float4 color8 = float4(0.1, 0.1, 0.1, 0.8);          // Dim charcoal
-                float4 color16 = float4(0.3, 0.3, 0.3, 0.8);         // Mid gray
-                float4 color20 = float4(0.95, 0.95, 0.95, 0.8);      // Nearly white
+                // Noir tone levels (grayscale)
+                float4 color7 = float4(0.0, 0.0, 0.0, _Alpha);               // Deep black
+                float4 color8 = float4(0.1, 0.1, 0.1, _Alpha);               // Charcoal
+                float4 color16 = float4(0.3, 0.3, 0.3, _Alpha);              // Mid gray
+                float4 color20 = float4(0.95, 0.95, 0.95, _Alpha);           // Almost white
 
-                float4 finalColor = (hsv.z < 0.3 ?
-                                        (hsv.z < 0.08 ?
-                                            (hsv.z < 0.05 ? color7 : color8)
-                                        : color16)
-                                    : color20);
+                float brightness = hsv.z + grain;
+
+                float4 finalColor = (brightness < _MidThreshold ?
+                                        (brightness < _DarkThreshold ?
+                                            color7 : color8)
+                                    : (brightness < 0.6 ? color16 : color20));
 
                 return finalColor;
             }

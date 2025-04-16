@@ -22,9 +22,29 @@ Material:
   m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Alpha: 0.657
+    - _BWAmount: 1
+    - _BWStrength: 1
+    - _BlackWeight: 0
+    - _DarkThreshold: 0.089
+    - _GrainIntensity: 0.007
+    - _HighlightWeight: 0.95
+    - _MidGrayWeight: 0.3
+    - _MidThreshold: 0.199
+    - _NoirBlend: 1
+    - _OverlayAlpha: 0.8
+    - _ShadowWeight: 0.08
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
