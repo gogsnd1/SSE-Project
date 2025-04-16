@@ -1,18 +1,18 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.Json;
 
 class Program
 {
-    // Simulated in-memory database (username → hashed password)
-    static Dictionary<string, string> userDatabase = new Dictionary<string, string>();
-
-    // Current active user
+    static List<User> userList = new List<User>(); // This holds all users in memory
     static string currentUsername = "";
+    static string userDatabasePath = "users.json"; // Path to JSON "database"
 
     static void Main()
     {
+        LoadUsers(); // Load existing users from JSON on startup
         Console.WriteLine("Welcome to the Secure Login System");
 
         while (true)
@@ -54,8 +54,8 @@ class Program
             return;
         }
 
-        // Prevent duplicate usernames
-        if (userDatabase.ContainsKey(username))
+         // Check if username already exists
+        if (userList.Exists(u => u.username == username))
         {
             Console.WriteLine("Username already exists.");
             return;
@@ -63,11 +63,14 @@ class Program
 
         // Hash the password and store it
         string hashed = HashPassword(password);
-        userDatabase[username] = hashed;
-        Console.WriteLine($"[DEBUG] Hashed password for {username}: {hashed}");
 
+        // Add new user to the list
+        userList.Add(new User(username, hashed));
 
-        Console.WriteLine($"Registered {username} successfully!");
+        // Save list to the JSON file
+        SaveUsers();
+
+        Console.WriteLine($"Registered {username} successfully.");
     }
 
     // Login a user
@@ -82,16 +85,10 @@ class Program
         // Hash the input password
         string hashed = HashPassword(password);
 
-        Console.WriteLine($"[DEBUG] Hashed password entered: {hashed}");
-
-         // Show stored hash (if user exists)
-        if (userDatabase.ContainsKey(username))
-        {
-            Console.WriteLine($"[DEBUG] Stored hash for {username}: {userDatabase[username]}");
-        }
+        User user = userList.Find(u => u.username == username);
 
         // Check if credentials match
-        if (userDatabase.ContainsKey(username) && userDatabase[username] == hashed)
+        if (user != null && user.hashedPassword == hashed)
         {
             currentUsername = username;
             Console.WriteLine($":) Welcome back, {currentUsername}!");
@@ -124,8 +121,28 @@ class Program
             // Convert bytes to hex string
             StringBuilder sb = new StringBuilder();
             foreach (byte b in hashBytes)
-                sb.Append(b.ToString("x2")); // "x2" = 2-digit hex
+                sb.Append(b.ToString("x2")); // "x2" = 2-digit hex; convert byte to hex
             return sb.ToString();
         }
+    }
+
+     // Load users from JSON
+    static void LoadUsers()
+    {
+        if (!File.Exists(userDatabasePath))
+        {
+            // Create empty file if it doesn’t exist
+            File.WriteAllText(userDatabasePath, "[]");
+        }
+
+        string json = File.ReadAllText(userDatabasePath);
+        userList = JsonSerializer.Deserialize<List<User>>(json);
+    }
+
+    // Save users to JSON
+    static void SaveUsers()
+    {
+        string json = JsonSerializer.Serialize(userList, new JsonSerializerOptions { WriteIndented = true });
+        File.WriteAllText(userDatabasePath, json);
     }
 }
