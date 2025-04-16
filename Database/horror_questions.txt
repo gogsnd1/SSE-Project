@@ -1,0 +1,254 @@
+What was your first password?
+(Open text input)
+Trigger: As the user types, the background flashes with distorted binary, and the typed letters glitch and repeat. A deep voice whispers, “Too easy.”
+
+What is your mother’s maiden name? (Open input)
+If player types something:
+The game pauses for 2 seconds, then types on its own:
+
+“We already had that. Just checking if you remembered.”
+Screen glitches violently, audio warps.
+
+If player leaves it blank or deletes input:
+
+“Good. Don’t give them everything.”
+A white noise layer fades in. The question disappears with no points added.
+
+The light flickers. What do you do?
+A. Look away
+B. Keep playing
+C. Close the app
+D. Nothing
+Trigger: Game screen dims randomly for 3–5 seconds after selection, simulating a power drop.
+
+We know what’s behind you. Do you?
+A. Yes
+B. Don’t turn around
+C. No
+D. Stop this
+
+Trigger: A loud, sudden static burst plays; a shadow briefly sweeps across the screen  when player turns around.
+
+Are you sure this is still just a game?
+Trigger: UI elements flicker, menu bar glitches briefly, and an unsettling low hum fades in.
+Options:
+
+A. Yes
+
+B. No
+
+C. …I don’t know
+
+D. Is it?
+
+We’ve been watching. Do you remember giving us permission?
+Trigger: The screen splits for a moment, revealing players reflection in a grainy monitor (if webcam is used).
+Options:
+
+A. I did
+
+B. I didn’t
+
+C. I don’t know
+
+D. You never asked
+
+How many eyes are watching you right now?
+Trigger: A silhouette with glowing eyes appears briefly in the corner of the screen, then vanishes.
+Options:
+
+A. One
+
+B. Two
+
+C. More than two
+
+D. None
+
+Is the voice in your head yours?
+Trigger: A soft, distorted whisper plays in reverse audio. Background color slowly desaturates.
+Options:
+
+A. Yes
+
+B. No
+
+C. It depends
+
+D. It’s not mine anymore
+
+When did you last feel safe?
+Trigger: Menu music fades out. Silence. Player hears a heartbeat sound.
+Options:
+
+A. Yesterday
+
+B. I don’t remember
+
+C. Never
+
+D. Just now
+
+Your camera is off. Or is it?
+Trigger: A fake red recording dot appears in the corner. A whisper says, “Smile.”
+Options:
+
+A. I disabled it
+
+B. It’s still watching
+
+C. It’s always on
+
+D. How do you know?
+
+Is this your IP address?
+The game fetches the player’s real IP address using an IP API or local network query (if possible within sandboxed limits).
+
+IP: 192.168.X.X
+
+Options:
+A. Yes
+B. No
+C. That’s not mine
+D. Stop this
+
+No matter the answer, the screen glitches and it says:
+
+“Not anymore.”
+Then displays “Connected.” in red font with blinking text like a remote intrusion warning.
+
+What’s your current location?
+(Based on city/state if geolocation is possible. Otherwise, make it seem like the game knows.)
+
+Text fades in automatically:
+
+“Lakeland, Florida. Close enough?”
+[Regardless of input, the player’s location slowly types itself in.]
+
+Why did you just flinch?
+Triggered by sudden loud screech + flicker from the previous screen
+
+“It was just a sound. But something else made you react.”
+
+Answer box doesn't allow input and autofills:
+
+“You’re being watched.”
+
+When was the last time you changed your password?
+If player types:
+
+“That’s what we thought.” (regardless of what they write)
+UI input locks for 5 seconds and screen pulses red once.
+
+If player refuses:
+
+“Good. Keep it to yourself. Keep it safe.”
+
+You didn’t answer that last question. Why not?
+If player types something:
+
+“You’re still giving us more than you should.”
+Screen flickers once, question disappears.
+
+If left blank:
+
+“Good. You’re learning.”
+A subtle hum fades in, as if the system is pleased.
+
+We asked for your name. You didn’t give it.
+Response auto-fills slowly:
+
+“Good. Some identities are worth keeping.”
+
+You didn’t type anything. Was that intentional?
+If the player clicks “Yes”:
+
+“Very good. Some truths are traps.”
+
+If the player clicks “No”:
+
+“Then your hesitation saved you.”
+
+You’ve stopped trusting the answers. That’s good.
+Triggered after player hesitates for 10+ seconds on multiple questions.
+
+“Questions can be traps too.”
+
+You’re doing better than the others.
+Spoken in distorted whisper after the player skips a deeply personal question.
+
+“They gave us everything. You didn’t.”
+
+Just for recovery purposes... what’s the name of your first pet? (Open Input)
+If answered:
+
+“Thanks. That’s one step closer.”
+(Text reappears later in a fake password reset popup.)
+
+If skipped:
+
+“Smart. That’s not something you share with strangers.”
+
+Can you confirm your birthday so we can tailor your experience?
+Answer options: Random dates + real device clock hint
+
+If chosen:
+
+“Perfect. Profile enhancement in progress…”
+(Ambient pulse increases.)
+
+If not selected:
+
+“That’s okay. Some things should stay offline.”
+
+We noticed a login from a new location. Can you verify your last address?
+Choices: Generated addresses, one eerily close to the player’s real location
+
+Choosing any:
+
+“Thank you. Local access granted.”
+(Screen distorts, background changes to suburban environment.)
+
+Skipping:
+
+“We won’t press… this time.”
+
+Confirm the last 4 digits of your number to continue:
+All answer choices look like plausible phone number endings
+
+Choosing any:
+
+“Verification logged.”
+(A ghostly voice echoes digits back later.)
+
+Not answering:
+
+“You paused. That’s the right instinct.”
+
+We noticed you're using Gmail. Would you like to link it for faster access?
+Options:
+A. Sure
+B. Maybe later
+C. No
+D. This isn’t right
+
+Choosing A or B:
+
+“Authorization pending…”
+(Screen glitches, fake OAuth page flashes briefly.)
+
+Choosing C or D:
+
+“Still sharp. Still yours.”
+
+Just one more question — for security. What’s your favorite teacher’s name?
+Open Input
+
+Answered:
+
+“We liked them too.”
+(Sudden silence. Player’s answer is echoed softly later.)
+
+Skipped:
+
+“You’re learning. Trust no one. Not even us.”
