@@ -39,6 +39,12 @@ CREATE TABLE user_answers (
     FOREIGN KEY (question_id) REFERENCES questions(question_id),
     FOREIGN KEY (selected_answer_id) REFERENCES answers(answer_id)
 );
- SELECT * FROM users, questions, answers, scores, user_answers;
 
- SELECT * FROM users;
+CREATE TABLE horror_events (
+    event_id INTEGER PRIMARY KEY AUTOINCREMENT,
+    prompt TEXT NOT NULL,
+    trigger TEXT,
+    response_type TEXT NOT NULL CHECK( response_type IN ('open', 'multiple', 'auto')),
+    options TEXT
+
+);
