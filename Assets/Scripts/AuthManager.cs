@@ -6,7 +6,6 @@ using System.Collections;
 public class AuthManager : MonoBehaviour
 {
     public InputField usernameInput;
-    public InputField emailInput;
     public InputField passwordInput;
     public Text messageText;
 
@@ -26,7 +25,6 @@ public class AuthManager : MonoBehaviour
     {
         WWWForm form = new WWWForm();
         form.AddField("username", usernameInput.text);
-        form.AddField("email", emailInput.text);
         form.AddField("password", passwordInput.text);
 
         UnityWebRequest www = UnityWebRequest.Post(apiUrl + "/signup", form);
