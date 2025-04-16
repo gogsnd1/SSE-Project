@@ -33,15 +33,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Alpha: 0.657
+    - _Alpha: 0.664
     - _BWAmount: 1
     - _BWStrength: 1
     - _BlackWeight: 0
-    - _DarkThreshold: 0.089
+    - _DarkThreshold: 0.088
     - _GrainIntensity: 0.007
     - _HighlightWeight: 0.95
     - _MidGrayWeight: 0.3
-    - _MidThreshold: 0.199
+    - _MidThreshold: 0.107
     - _NoirBlend: 1
     - _OverlayAlpha: 0.8
     - _ShadowWeight: 0.08
