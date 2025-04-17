@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b52c39bb1112ce745b8e3c04900e5bdb, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 132621987}
   - component: {fileID: 132621988}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: RoomAmbience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -287,7 +287,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.5
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -860,7 +860,7 @@ GameObject:
   - component: {fileID: 429237153}
   - component: {fileID: 429237154}
   m_Layer: 0
-  m_Name: Audio Source (1)
+  m_Name: AC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,9 +894,9 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: d847fc2b11567a946b7a6a4ab387c8f2, type: 3}
   m_Resource: {fileID: 8300000, guid: d847fc2b11567a946b7a6a4ab387c8f2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.045
+  m_Volume: 0.025
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -938,7 +938,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -9330,18 +9330,18 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1396614359}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 25
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: -1
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!1 &1871500445
 GameObject:
@@ -9651,6 +9651,8 @@ MonoBehaviour:
   sensitivity: 5
   playerCamera: {fileID: 1396614359}
   playerBody: {fileID: 1479243037}
+  clickSound: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
+  clickVolume: 0.3
 --- !u!4 &1982440343
 Transform:
   m_ObjectHideFlags: 0
@@ -10255,7 +10257,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 20000
+  m_ColorTemperature: 6875
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 6.59e-43, y: 7.1e-44, z: 0, w: 2.3149295e-18}
   m_UseBoundingSphereOverride: 0
@@ -14290,7 +14292,7 @@ Transform:
   m_GameObject: {fileID: 2494918599052621799}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5232754, y: -0.34203392, z: 0.72694236, w: 0.2841663}
-  m_LocalPosition: {x: -0, y: -0.095, z: 0}
+  m_LocalPosition: {x: -0, y: -0.2, z: 0}
   m_LocalScale: {x: 76.04488, y: 76.04488, z: 76.0449}
   m_ConstrainProportionsScale: 0
   m_Children: []
