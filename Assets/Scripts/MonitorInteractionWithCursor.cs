@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 
 public class MonitorInteractionWithCursor : MonoBehaviour
 {
@@ -8,8 +10,12 @@ public class MonitorInteractionWithCursor : MonoBehaviour
     public Canvas monitorCanvas;
     public RectTransform customCursor;
     public float interactionDistance = 3f;
-
+    public AudioSource audioSource;
     private bool isCursorActive = false;
+
+    [Header("Click Sound Settings")]
+    [SerializeField] AudioClip clickSound;         // Assign sound in Inspector
+    [SerializeField][Range(0f, 1f)] float clickVolume = 0.5f;
 
     void Start()
     {
@@ -20,13 +26,23 @@ public class MonitorInteractionWithCursor : MonoBehaviour
 
     void Update()
     {
+
         if ( Input.GetKeyDown(KeyCode.Space))
         {
             ToggleCustomCursor();
+            //TODO: Stop sound from playing when Spacebar is pressed
+
         }
 
         if (isCursorActive)
         {
+            // Play click sound with volume
+            if (Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space))
+            { 
+                audioSource.PlayOneShot(clickSound, clickVolume);
+            
+            }
+
             UpdateCursorPosition();
         }
     }
