@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 124803239}
   - component: {fileID: 124803241}
   - component: {fileID: 124803240}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SignUpPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -424,7 +424,7 @@ GameObject:
   - component: {fileID: 241139344}
   - component: {fileID: 241139346}
   - component: {fileID: 241139345}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 283649190}
   - component: {fileID: 283649192}
   - component: {fileID: 283649191}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -585,7 +585,7 @@ GameObject:
   - component: {fileID: 316587052}
   - component: {fileID: 316587051}
   - component: {fileID: 316587053}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CustomCursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -954,7 +954,7 @@ GameObject:
   - component: {fileID: 409427174}
   - component: {fileID: 409427173}
   - component: {fileID: 409427172}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1162,7 +1162,7 @@ GameObject:
   - component: {fileID: 446585778}
   - component: {fileID: 446585777}
   - component: {fileID: 446585776}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1242,7 +1242,7 @@ GameObject:
   - component: {fileID: 455321592}
   - component: {fileID: 455321591}
   - component: {fileID: 455321590}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Username InputField SU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1387,7 +1387,7 @@ GameObject:
   - component: {fileID: 503157541}
   - component: {fileID: 503157543}
   - component: {fileID: 503157542}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1468,7 +1468,7 @@ GameObject:
   - component: {fileID: 508717402}
   - component: {fileID: 508717404}
   - component: {fileID: 508717403}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6587,7 +6587,7 @@ GameObject:
   - component: {fileID: 655201835}
   - component: {fileID: 655201837}
   - component: {fileID: 655201836}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6755,7 +6755,7 @@ GameObject:
   - component: {fileID: 679809311}
   - component: {fileID: 679809310}
   - component: {fileID: 679809309}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SignUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6955,7 +6955,7 @@ GameObject:
   - component: {fileID: 738410239}
   - component: {fileID: 738410238}
   - component: {fileID: 738410237}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7328,7 +7328,7 @@ GameObject:
   - component: {fileID: 951880796}
   - component: {fileID: 951880797}
   - component: {fileID: 951880798}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7407,7 +7407,7 @@ GameObject:
   - component: {fileID: 980850954}
   - component: {fileID: 980850956}
   - component: {fileID: 980850955}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7487,7 +7487,7 @@ GameObject:
   - component: {fileID: 1099359374}
   - component: {fileID: 1099359373}
   - component: {fileID: 1099359371}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Password InputField SI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7633,7 +7633,7 @@ GameObject:
   - component: {fileID: 1100922755}
   - component: {fileID: 1100922754}
   - component: {fileID: 1100922753}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SignUPButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7753,7 +7753,7 @@ GameObject:
   - component: {fileID: 1171666825}
   - component: {fileID: 1171666826}
   - component: {fileID: 1171666827}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7918,7 +7918,7 @@ GameObject:
   - component: {fileID: 1231665080}
   - component: {fileID: 1231665082}
   - component: {fileID: 1231665081}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Message Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8106,7 +8106,7 @@ GameObject:
   - component: {fileID: 1277335223}
   - component: {fileID: 1277335222}
   - component: {fileID: 1277335220}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Username InputField SI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8252,7 +8252,7 @@ GameObject:
   - component: {fileID: 1278631880}
   - component: {fileID: 1278631879}
   - component: {fileID: 1278631878}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SignInButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8373,7 +8373,7 @@ GameObject:
   - component: {fileID: 1381891791}
   - component: {fileID: 1381891790}
   - component: {fileID: 1381891789}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SignUpButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8631,7 +8631,7 @@ GameObject:
   - component: {fileID: 1443952381}
   - component: {fileID: 1443952380}
   - component: {fileID: 1443952379}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8752,7 +8752,7 @@ GameObject:
   - component: {fileID: 1457073396}
   - component: {fileID: 1457073395}
   - component: {fileID: 1457073394}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Password InputField SU
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8897,7 +8897,7 @@ GameObject:
   - component: {fileID: 1478530020}
   - component: {fileID: 1478530022}
   - component: {fileID: 1478530021}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9064,7 +9064,7 @@ GameObject:
   - component: {fileID: 1531823586}
   - component: {fileID: 1531823588}
   - component: {fileID: 1531823587}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9143,7 +9143,7 @@ GameObject:
   - component: {fileID: 1557368748}
   - component: {fileID: 1557368750}
   - component: {fileID: 1557368749}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9222,7 +9222,7 @@ GameObject:
   - component: {fileID: 1611493642}
   - component: {fileID: 1611493644}
   - component: {fileID: 1611493643}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: MainMenuPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9387,7 +9387,7 @@ GameObject:
   - component: {fileID: 1698071950}
   - component: {fileID: 1698071949}
   - component: {fileID: 1698071948}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: GuestButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9508,7 +9508,7 @@ GameObject:
   - component: {fileID: 1778142570}
   - component: {fileID: 1778142569}
   - component: {fileID: 1778142568}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9808,7 +9808,7 @@ GameObject:
   - component: {fileID: 1972386469}
   - component: {fileID: 1972386471}
   - component: {fileID: 1972386470}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9941,7 +9941,7 @@ GameObject:
   - component: {fileID: 2008440216}
   - component: {fileID: 2008440218}
   - component: {fileID: 2008440217}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (Legacy)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10020,7 +10020,7 @@ GameObject:
   - component: {fileID: 2015653106}
   - component: {fileID: 2015653107}
   - component: {fileID: 2015653108}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: UIManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10097,7 +10097,7 @@ GameObject:
   - component: {fileID: 2049881397}
   - component: {fileID: 2049881399}
   - component: {fileID: 2049881398}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: SignInPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
