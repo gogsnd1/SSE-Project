@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-using System.Data;
-using Mono.Data.Sqlite;
+// using System.Data; // COMMENTED OUT: No longer using database
+// using Mono.Data.Sqlite; // COMMENTED OUT: Removed DLL
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -24,11 +24,12 @@ public class LoginUIManager : MonoBehaviour
     public Text messageText;
 
     // Path to SQLite database
-    private string dbPath;
+    // COMMENTED OUT: not used without SQLite
+    // private string dbPath;
 
     void Start()
     {
-        dbPath = "URI=file:" + Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite");
+        // dbPath = "URI=file:" + Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite"); // COMMENTED OUT
         ShowMainMenu();
     }
 
@@ -56,7 +57,7 @@ public class LoginUIManager : MonoBehaviour
     {
         string guestName = "Guest_" + UnityEngine.Random.Range(1000, 9999);
         messageText.text = "Welcome, " + guestName + "!";
-        // You could store guest name here for gameplay session
+        // TODO: Store guest name or transition to gameplay
     }
 
     public void OnCreateAccountPressed()
@@ -78,6 +79,8 @@ public class LoginUIManager : MonoBehaviour
 
         string hashed = HashPassword(password);
 
+        // COMMENTED OUT: SQLite sign-up logic
+        /*
         using (IDbConnection db = new SqliteConnection(dbPath))
         {
             db.Open();
@@ -98,8 +101,9 @@ public class LoginUIManager : MonoBehaviour
             AddParam(insertCmd, "@p", hashed);
             insertCmd.ExecuteNonQuery();
         }
+        */
 
-        ShowMessage("Account created!");
+        ShowMessage("Account created (mock)!");
         ShowMainMenu();
     }
 
@@ -116,6 +120,8 @@ public class LoginUIManager : MonoBehaviour
 
         string hashed = HashPassword(password);
 
+        // COMMENTED OUT: SQLite login logic
+        /*
         using (IDbConnection db = new SqliteConnection(dbPath))
         {
             db.Open();
@@ -130,6 +136,10 @@ public class LoginUIManager : MonoBehaviour
             else
                 ShowMessage("Invalid login.");
         }
+        */
+
+        // MOCKED LOGIN SUCCESS (you can fake "user123" if you want)
+        ShowMessage("Login simulated (no database connected)");
     }
 
     private void ShowMessage(string msg)
@@ -151,6 +161,8 @@ public class LoginUIManager : MonoBehaviour
         }
     }
 
+    // COMMENTED OUT: Not used without SQLite
+    /*
     private void AddParam(IDbCommand cmd, string name, object value)
     {
         var param = cmd.CreateParameter();
@@ -158,4 +170,5 @@ public class LoginUIManager : MonoBehaviour
         param.Value = value;
         cmd.Parameters.Add(param);
     }
+    */
 }
