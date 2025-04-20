@@ -12379,19 +12379,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCamera: {fileID: 1396614359}
+  player: {fileID: 1982440341}
   monitor: {fileID: 373939914}
   monitorCanvas: {fileID: 1778142570}
   customCursor: {fileID: 316587050}
   lookScript: {fileID: 1982440342}
   interactionDistance: 3
-  inputCooldown: 0.1
   cursorSensitivity: 1
   edgeBuffer: 7
   audioMixer: {fileID: 24100000, guid: 724a42cac6678a64987d488ac4c63fa8, type: 2}
   audioSource: {fileID: 316587053}
   clickSound: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
-  maxYaw: 15
-  maxPitch: 10
 --- !u!1 &2049881396
 GameObject:
   m_ObjectHideFlags: 0

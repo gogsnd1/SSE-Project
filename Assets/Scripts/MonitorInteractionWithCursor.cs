@@ -7,6 +7,7 @@ using System.Collections.Generic;
 public class MonitorInteractionWithCursor : MonoBehaviour
 {
    public Camera playerCamera;
+   public GameObject player;
    public GameObject monitor;
    public Canvas monitorCanvas;
    public RectTransform customCursor;
@@ -14,8 +15,6 @@ public class MonitorInteractionWithCursor : MonoBehaviour
    public float interactionDistance = 3f;
    private bool isCursorActive = false;
    private Vector2 cursorPosition;
-   private float cursorActivationTime = -1f;
-   [SerializeField][Range(0f, 1f)] float inputCooldown = 0.1f; // ignore input for s seconds after activating
 
    [Header("Cursor Settings")]
    [SerializeField][Range(0f, 1f)] float cursorSensitivity = 0.5f; // sensitivity for cursor movement
@@ -26,12 +25,6 @@ public class MonitorInteractionWithCursor : MonoBehaviour
    public AudioMixer audioMixer; // Assign AudioMixer in Inspector
    public AudioSource audioSource;
    [SerializeField] AudioClip clickSound;         // Assign sound in Inspector
-
-    [Header("Camera lock Settings")]
-    public float maxYaw = 15f;   // Left-right limit (Y-axis)
-    public float maxPitch = 10f; // Up-down limit (X-axis)
-    private Vector3 initialCameraRotation;
-    // Vertical limit (X axis)
 
 
    void Start()
@@ -52,25 +45,21 @@ public class MonitorInteractionWithCursor : MonoBehaviour
     if (Input.GetKeyDown(KeyCode.Space))
     {
         ToggleCustomCursor();
-        cursorActivationTime = Time.time; // record when cursor was toggled
         return;
     }
 
     if (isCursorActive)
     {
-        lookScript.playerCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        playerCamera.transform.rotation = Quaternion.Euler(0, 0, 0);
+        player.transform.rotation = Quaternion.Euler(0, -90f, 0);
         lookScript.enabled = false;
-
-        // Check if enough time has passed since cursor activation
-        if (Time.time - cursorActivationTime > inputCooldown)
         {
             if (Input.GetMouseButtonDown(0))
             {
                audioSource.PlayOneShot(clickSound); // Let the AudioMixer control volume
             }
-        }
-
         UpdateCursorPosition();
+    }
     }
 }
 
@@ -84,13 +73,9 @@ public class MonitorInteractionWithCursor : MonoBehaviour
 
        if (isCursorActive)
     {
-    initialCameraRotation = playerCamera.transform.localEulerAngles;
     // Center the cursor when monitor opens
     cursorPosition = Vector2.zero;
     customCursor.anchoredPosition = Vector2.zero;
-    //lock the camera rotation
-    //lookScript.rotationX += (invert ? 1 : -1) * mouseY;
-    //lookScript.rotationX = Mathf.Clamp(rotationX, -90, 90);
     lookScript.enabled = false;
     }
    }
