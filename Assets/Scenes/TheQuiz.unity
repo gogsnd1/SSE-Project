@@ -10162,14 +10162,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb835292c847445139264e44f0549ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerCamera: {fileID: 1396614359}
   monitor: {fileID: 373939914}
-  monitorCanvas: {fileID: 1778142570}
   customCursor: {fileID: 316587050}
-  interactionDistance: 3
+  uiCanvas: {fileID: 0}
   audioSource: {fileID: 316587053}
   clickSound: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
-  clickVolume: 0.5
+  playerCamera: {fileID: 1396614359}
+  playerTransform: {fileID: 1982440343}
+  cameraPitchTransform: {fileID: 1396614360}
+  limitCameraWhileUsingMonitor: 1
+  yawLimit: 15
+  pitchLimit: 10
 --- !u!1 &2049881396
 GameObject:
   m_ObjectHideFlags: 0
