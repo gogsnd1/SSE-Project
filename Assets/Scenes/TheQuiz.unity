@@ -1030,10 +1030,10 @@ AudioSource:
   m_GameObject: {fileID: 316587049}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 724a42cac6678a64987d488ac4c63fa8, type: 2}
   m_audioClip: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
   m_Resource: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -13185,10 +13185,12 @@ MonoBehaviour:
   customCursor: {fileID: 316587050}
   lookScript: {fileID: 1982440342}
   interactionDistance: 3
-  audioSource: {fileID: 316587053}
+  inputCooldown: 0.1
   cursorSensitivity: 1
+  edgeBuffer: 7
+  audioMixer: {fileID: 24100000, guid: 724a42cac6678a64987d488ac4c63fa8, type: 2}
+  audioSource: {fileID: 316587053}
   clickSound: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
-  clickVolume: 0.5
   maxYaw: 15
   maxPitch: 10
 --- !u!1 &2049881396
