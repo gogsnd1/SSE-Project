@@ -11349,8 +11349,11 @@ MonoBehaviour:
   customCursor: {fileID: 316587050}
   interactionDistance: 3
   audioSource: {fileID: 316587053}
+  cursorSensitivity: 1
   clickSound: {fileID: 8300000, guid: bca5ed42783f51c4aa1fb00890397855, type: 3}
   clickVolume: 0.5
+  maxYaw: 15
+  maxPitch: 10
 --- !u!1 &2049881396
 GameObject:
   m_ObjectHideFlags: 0
