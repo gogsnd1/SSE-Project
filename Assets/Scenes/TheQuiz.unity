@@ -937,9 +937,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetText: {fileID: 1116969001}
-  message: "WHY WON\u2019T YOU OPEN IT? WHY WON\u2019T YOU OPEN IT?? WHY WON\u2019T
-    YOU OPEN IT??? WHY WON\u2019T YOU OPEN IT???? WHY WON\u2019T YOU OPEN IT?????
-    WHY WON\u2019T YOU OPEN IT?????? WHY WON\u2019T YOU OPEN IT."
+  message: "WH\xA5 W0N\u2019T Y0U 0P3N 1T? WH\xA5 W0N\u2019T Y0U 0P3N 1T\xBF WH\xA5
+    W0N\u2019T Y0U \xD8P3N 1T?! WH\xA5 W0N\u2019T\u2014? P\u0337L\u0335E\u0336@\u0338$\u0334\u039E\u0338
+    $@? WH\xA5 W0N\u2019T Y0U \xD8P\u039EN 1T\u2047\u2047 WH\xA5 W0N\u2019T Y0U \xD8P\u039EN
+    1T\u2048\u2048 I\u2019M ALREADY I\u0418S1D\u039E, \U0001D541\U0001D566\U0001D564\U0001D565
+    . I'M \u15B4R\u0246\u20B3\u2C60.\r\n\r\n"
   startDelay: 0
   typeDelay: 0.075
   glitchChance: 0.5
@@ -1908,7 +1910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &445296686
 Transform:
   m_ObjectHideFlags: 0
@@ -9625,8 +9627,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 15
-  m_fontSizeBase: 15
+  m_fontSize: 14.5
+  m_fontSizeBase: 14.5
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
