@@ -7,7 +7,7 @@ public class LookScript : MonoBehaviour
     [SerializeField] bool invert = false;
     [SerializeField] float sensitivity = 10.0f;
 
-    [SerializeField] Camera playerCamera;
+    [SerializeField] public Camera playerCamera;
     [SerializeField] Transform playerBody;
 
     [Header("Click Sound Settings")]
