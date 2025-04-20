@@ -29,6 +29,16 @@ public class LookScript : MonoBehaviour
         audioSource.playOnAwake = false;
     }
 
+    public void ResetLookRotation(Vector3 playerRot, Vector3 camRot)
+    {
+        rotationX = camRot.x;
+        rotationY = playerRot.y;
+
+        transform.rotation = Quaternion.Euler(0, rotationY, 0);
+        playerCamera.transform.localRotation = Quaternion.Euler(rotationX, 0, 0);
+    }
+
+
     void Update()
     {
         // Mouse Look
