@@ -42,8 +42,11 @@ public class MonitorInteractionWithCursor : MonoBehaviour
    void Update()
    {
 
-        lookScript.enabled = true;
-       if ( Input.GetKeyDown(KeyCode.Space))
+        if (!PauseMenu.GameIsPaused && !isCursorActive)
+        {
+            lookScript.enabled = true;
+        }
+        if ( Input.GetKeyDown(KeyCode.Space))
        {
            ToggleCustomCursor();
            //TODO: Stop sound from playing when Spacebar is pressed
