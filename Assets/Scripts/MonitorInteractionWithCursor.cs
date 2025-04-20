@@ -17,7 +17,6 @@ public class MonitorInteractionWithCursor : MonoBehaviour
 
    [Header("Cursor Settings")]
    [SerializeField][Range(0f, 1f)] float cursorSensitivity = 0.5f;
-    [SerializeField] float snapDistance = 50f; // Distance to snap cursor to button
 
 
    [Header("Click Sound Settings")]
@@ -109,8 +108,8 @@ public class MonitorInteractionWithCursor : MonoBehaviour
        // Clamp the cursor inside the canvas bounds
        float edgeBuffer = 10f;
        Vector2 clampedPos = new Vector2(
-       Mathf.Clamp(localPoint.x, canvasRect.rect.xMin + edgeBuffer, canvasRect.rect.xMax - edgeBuffer),
-       Mathf.Clamp(localPoint.y, canvasRect.rect.yMin + edgeBuffer, canvasRect.rect.yMax - edgeBuffer));
+       Mathf.Clamp(localPoint.x * cursorSensitivity, canvasRect.rect.xMin + edgeBuffer, canvasRect.rect.xMax - edgeBuffer),
+       Mathf.Clamp(localPoint.y * cursorSensitivity, canvasRect.rect.yMin + edgeBuffer, canvasRect.rect.yMax - edgeBuffer));
 
 
        customCursor.anchoredPosition = clampedPos;
@@ -121,35 +120,5 @@ float NormalizeAngle(float angle)
 {
     if (angle > 180f) angle -= 360f;
     return angle;
-}
-
-
-Vector2 GetSnappedCursorPosition(Vector2 currentPos)
-{
-    Button[] buttons = monitorCanvas.GetComponentsInChildren<Button>();
-    RectTransform closestButton = null;
-    float closestDistance = float.MaxValue;
-
-    foreach (Button btn in buttons)
-    {
-        RectTransform btnRect = btn.GetComponent<RectTransform>();
-        Vector2 btnPos = btnRect.anchoredPosition;
-        float dist = Vector2.Distance(currentPos, btnPos);
-
-        if (dist < closestDistance && dist <= snapDistance)
-        {
-            closestDistance = dist;
-            closestButton = btnRect;
-        }
-    }
-
-    // If a button is close enough, snap to it
-    if (closestButton != null)
-    {
-        return closestButton.anchoredPosition;
-    }
-
-    // Otherwise return the current position
-    return currentPos;
 }
 }
