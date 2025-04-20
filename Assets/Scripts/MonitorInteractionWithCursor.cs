@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using System.Collections;
 using System.Collections.Generic;
-
 
 public class MonitorInteractionWithCursor : MonoBehaviour
 {
@@ -12,17 +12,20 @@ public class MonitorInteractionWithCursor : MonoBehaviour
    public RectTransform customCursor;
    public LookScript lookScript;
    public float interactionDistance = 3f;
-   public AudioSource audioSource;
    private bool isCursorActive = false;
    private Vector2 cursorPosition;
+   private float cursorActivationTime = -1f;
+   [SerializeField][Range(0f, 1f)] float inputCooldown = 0.1f; // ignore input for s seconds after activating
 
    [Header("Cursor Settings")]
-   [SerializeField][Range(0f, 1f)] float cursorSensitivity = 0.5f;
+   [SerializeField][Range(0f, 1f)] float cursorSensitivity = 0.5f; // sensitivity for cursor movement
+    [SerializeField][Range(0f, 10f)] float edgeBuffer = 5f; // buffer to prevent cursor from going off-screen
 
 
    [Header("Click Sound Settings")]
+   public AudioMixer audioMixer; // Assign AudioMixer in Inspector
+   public AudioSource audioSource;
    [SerializeField] AudioClip clickSound;         // Assign sound in Inspector
-   [SerializeField][Range(0f, 1f)] float clickVolume = 0.5f;
 
     [Header("Camera lock Settings")]
     public float maxYaw = 15f;   // Left-right limit (Y-axis)
@@ -40,36 +43,36 @@ public class MonitorInteractionWithCursor : MonoBehaviour
 
 
    void Update()
-   {
+{
+    if (!PauseMenu.GameIsPaused && !isCursorActive)
+    {
+        lookScript.enabled = true;
+    }
 
-        if (!PauseMenu.GameIsPaused && !isCursorActive)
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+        ToggleCustomCursor();
+        cursorActivationTime = Time.time; // record when cursor was toggled
+        return;
+    }
+
+    if (isCursorActive)
+    {
+        lookScript.playerCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        lookScript.enabled = false;
+
+        // Check if enough time has passed since cursor activation
+        if (Time.time - cursorActivationTime > inputCooldown)
         {
-            lookScript.enabled = true;
+            if (Input.GetMouseButtonDown(0))
+            {
+               audioSource.PlayOneShot(clickSound); // Let the AudioMixer control volume
+            }
         }
-        if ( Input.GetKeyDown(KeyCode.Space))
-       {
-           ToggleCustomCursor();
-           //TODO: Stop sound from playing when Spacebar is pressed
 
-       }
-
-
-       if (isCursorActive)
-       {
-        // Limit camera rotation
-        lookScript.enabled = false;  
-        // Play click sound with volume
-        if (Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space))
-           {
-               audioSource.PlayOneShot(clickSound, clickVolume);
-          
-           }
-
-
-           UpdateCursorPosition();
-       }
-   }
-
+        UpdateCursorPosition();
+    }
+}
 
    void ToggleCustomCursor()
    {
@@ -88,7 +91,6 @@ public class MonitorInteractionWithCursor : MonoBehaviour
     //lock the camera rotation
     //lookScript.rotationX += (invert ? 1 : -1) * mouseY;
     //lookScript.rotationX = Mathf.Clamp(rotationX, -90, 90);
-    lookScript.playerCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
     lookScript.enabled = false;
     }
    }
@@ -104,7 +106,6 @@ public class MonitorInteractionWithCursor : MonoBehaviour
        canvasRect, Input.mousePosition, playerCamera, out localPoint))
    {
        // Clamp the cursor inside the canvas bounds
-       float edgeBuffer = 10f;
        Vector2 clampedPos = new Vector2(
        Mathf.Clamp(localPoint.x * cursorSensitivity, canvasRect.rect.xMin + edgeBuffer, canvasRect.rect.xMax - edgeBuffer),
        Mathf.Clamp(localPoint.y * cursorSensitivity, canvasRect.rect.yMin + edgeBuffer, canvasRect.rect.yMax - edgeBuffer));
