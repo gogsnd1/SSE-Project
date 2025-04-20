@@ -740,7 +740,7 @@ RectTransform:
   m_GameObject: {fileID: 316587049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.000077956}
-  m_LocalScale: {x: 0.2045, y: 0.2045, z: 0.2045}
+  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1778142567}
@@ -11347,6 +11347,7 @@ MonoBehaviour:
   monitor: {fileID: 373939914}
   monitorCanvas: {fileID: 1778142570}
   customCursor: {fileID: 316587050}
+  lookScript: {fileID: 1982440342}
   interactionDistance: 3
   audioSource: {fileID: 316587053}
   cursorSensitivity: 1

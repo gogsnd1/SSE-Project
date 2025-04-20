@@ -10,6 +10,7 @@ public class MonitorInteractionWithCursor : MonoBehaviour
    public GameObject monitor;
    public Canvas monitorCanvas;
    public RectTransform customCursor;
+   public LookScript lookScript;
    public float interactionDistance = 3f;
    public AudioSource audioSource;
    private bool isCursorActive = false;
@@ -41,7 +42,7 @@ public class MonitorInteractionWithCursor : MonoBehaviour
    void Update()
    {
 
-
+        lookScript.enabled = true;
        if ( Input.GetKeyDown(KeyCode.Space))
        {
            ToggleCustomCursor();
@@ -52,19 +53,8 @@ public class MonitorInteractionWithCursor : MonoBehaviour
 
        if (isCursorActive)
        {
-        Vector3 currentEuler = playerCamera.transform.localEulerAngles;
-
-        // Normalize angles to -180 to 180
-        float yaw = NormalizeAngle(currentEuler.y);
-        float pitch = NormalizeAngle(currentEuler.x);
-        float initialYaw = NormalizeAngle(initialCameraRotation.y);
-        float initialPitch = NormalizeAngle(initialCameraRotation.x);
-
-        yaw = Mathf.Clamp(yaw, initialYaw - maxYaw, initialYaw + maxYaw);
-        pitch = Mathf.Clamp(pitch, initialPitch - maxPitch, initialPitch + maxPitch);
-
-        playerCamera.transform.localEulerAngles = new Vector3(pitch, yaw, 0);
-           
+        // Limit camera rotation
+        lookScript.enabled = false;  
         // Play click sound with volume
         if (Input.GetMouseButtonDown(0) && !Input.GetKeyDown(KeyCode.Space))
            {
@@ -92,6 +82,11 @@ public class MonitorInteractionWithCursor : MonoBehaviour
     // Center the cursor when monitor opens
     cursorPosition = Vector2.zero;
     customCursor.anchoredPosition = Vector2.zero;
+    //lock the camera rotation
+    //lookScript.rotationX += (invert ? 1 : -1) * mouseY;
+    //lookScript.rotationX = Mathf.Clamp(rotationX, -90, 90);
+    lookScript.playerCamera.transform.localRotation = Quaternion.Euler(0, 0, 0);
+    lookScript.enabled = false;
     }
    }
 
@@ -114,11 +109,5 @@ public class MonitorInteractionWithCursor : MonoBehaviour
 
        customCursor.anchoredPosition = clampedPos;
    }
-}
-
-float NormalizeAngle(float angle)
-{
-    if (angle > 180f) angle -= 360f;
-    return angle;
 }
 }
