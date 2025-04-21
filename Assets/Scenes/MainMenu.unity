@@ -1693,17 +1693,19 @@ MonoBehaviour:
   m_text: "The Quiz is a psychological horror experience that explores themes of
     mobile security, data awareness, and personal privacy.\n\nThis game contains
     simulated phishing, social engineering scenarios, and deliberately invasive content
-    designed for educational purposes.\n\nNo real personal data is collected, transmitted,
-    or stored externally. All game progress is saved locally on your device.\n\nBy
-    continuing, you acknowledge this experience may challenge your comfort, perception,
-    and awareness.\n\nThis is not a real security audit. This is a simulation.\n\nProceed
-    with caution.\n\n\nThis game contains flickering lights, sudden visual distortions,
-    and visual effects that may trigger seizures for players with photosensitive
-    epilepsy.\n\nViewer discretion is advised.\n\n\nYour quiz results and score history
-    are stored locally on your device.\n\nNo personal information is uploaded or
-    shared.\n\nSome screens may simulate access to personal information. These are
-    narrative illusions, not real data retrieval.\n\nYour device remains under your
-    control. Until it doesn\u2019t."
+    designed for educational purposes.\n\nYour quiz scores will be submitted to a
+    public leaderboard. While names are anonymized, high scores are stored and displayed
+    globally.\n\nThe game may access your device's IP address to simulate real-world
+    data awareness. This is used for gameplay immersion and is not stored beyond
+    the session.\n\nNo real personal data is collected or transmitted externally\u2014aside
+    from your score and approximate location.\n\nBy continuing, you acknowledge this
+    experience may challenge your comfort, perception, and awareness.\n\nThis is
+    not a real security audit. This is a simulation.\n\nProceed with caution.\n\nThis
+    game contains flickering lights, sudden visual distortions, and visual effects
+    that may trigger seizures for players with photosensitive epilepsy.\n\nViewer
+    discretion is advised.\n\nSome screens may simulate access to personal information.
+    These are narrative illusions not actual intrusions.\n\nYour device remains under
+    your control. Until it doesn\u2019t."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1730,8 +1732,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 12
-  m_fontSizeBase: 12
+  m_fontSize: 11.75
+  m_fontSizeBase: 11.75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3124,7 +3126,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
@@ -10184,8 +10186,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 724a42cac6678a64987d488ac4c63fa8, type: 2}
-  m_audioClip: {fileID: 8300000, guid: 189343d2a749d764d8a885907c53ef0a, type: 3}
-  m_Resource: {fileID: 8300000, guid: 189343d2a749d764d8a885907c53ef0a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8dd142533c129594081fe3dc734872b1, type: 3}
+  m_Resource: {fileID: 8300000, guid: 8dd142533c129594081fe3dc734872b1, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 0.95
