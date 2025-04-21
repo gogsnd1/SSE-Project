@@ -1,19 +1,19 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using SQLite4Unity3d; // NEW: SQLite4Unity3d namespace
+using SQLite4Unity3d; // Required for SQLite4Unity3d support
 
 public class LoginUIManager : MonoBehaviour
 {
-    // Panels
+    // UI Panels
     public GameObject mainMenuPanel;
     public GameObject signUpPanel;
     public GameObject signInPanel;
 
-    // Inputs for sign-up and sign-in
+    // UI Input Fields
     public InputField signUpUsername;
     public InputField signUpPassword;
     public InputField signInUsername;
@@ -28,7 +28,7 @@ public class LoginUIManager : MonoBehaviour
     {
         string dbPath = Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite");
         db = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
-        db.CreateTable<User>(); // Ensure table exists
+        db.CreateTable<users>(); // Maps to your 'users' table
 
         ShowMainMenu();
     }
@@ -57,7 +57,6 @@ public class LoginUIManager : MonoBehaviour
     {
         string guestName = "Guest_" + UnityEngine.Random.Range(1000, 9999);
         messageText.text = "Welcome, " + guestName + "!";
-        // TODO: Store guest name or transition to gameplay
     }
 
     public void OnCreateAccountPressed()
@@ -79,14 +78,19 @@ public class LoginUIManager : MonoBehaviour
 
         string hashed = HashPassword(password);
 
-        var existingUser = db.Table<User>().Where(u => u.username == username).FirstOrDefault();
+        var existingUser = db.Table<users>().Where(u => u.user_username == username).FirstOrDefault();
         if (existingUser != null)
         {
             ShowMessage("Username already exists.");
             return;
         }
 
-        db.Insert(new User { username = username, password = hashed });
+        db.Insert(new users
+        {
+            user_username = username,
+            user_password = hashed,
+            created_at = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
+        });
 
         ShowMessage("Account created!");
         ShowMainMenu();
@@ -105,7 +109,9 @@ public class LoginUIManager : MonoBehaviour
 
         string hashed = HashPassword(password);
 
-        var user = db.Table<User>().Where(u => u.username == username && u.password == hashed).FirstOrDefault();
+        var user = db.Table<users>()
+            .Where(u => u.user_username == username && u.user_password == hashed)
+            .FirstOrDefault();
 
         if (user != null)
             ShowMessage("Login successful!");
@@ -132,13 +138,13 @@ public class LoginUIManager : MonoBehaviour
         }
     }
 
-    // Class that maps to 'users' table in your .sqlite file
-    public class User
+    // Maps directly to your 'users' table
+    public class users
     {
         [PrimaryKey, AutoIncrement]
-        public int id { get; set; }
-        public string username { get; set; }
-        public string password { get; set; }
+        public int user_id { get; set; }
+        public string user_username { get; set; }
+        public string user_password { get; set; }
+        public string created_at { get; set; }
     }
 }
-*/
