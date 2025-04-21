@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
-// using System.Data; // COMMENTED OUT: No longer using database
-// using Mono.Data.Sqlite; // COMMENTED OUT: Removed DLL
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using SQLite4Unity3d; // NEW: SQLite4Unity3d namespace
 
 public class LoginUIManager : MonoBehaviour
 {
@@ -23,13 +22,14 @@ public class LoginUIManager : MonoBehaviour
     // Feedback display
     public Text messageText;
 
-    // Path to SQLite database
-    // COMMENTED OUT: not used without SQLite
-    // private string dbPath;
+    private SQLiteConnection db;
 
     void Start()
     {
-        // dbPath = "URI=file:" + Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite"); // COMMENTED OUT
+        string dbPath = Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite");
+        db = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
+        db.CreateTable<User>(); // Ensure table exists
+
         ShowMainMenu();
     }
 
@@ -79,31 +79,16 @@ public class LoginUIManager : MonoBehaviour
 
         string hashed = HashPassword(password);
 
-        // COMMENTED OUT: SQLite sign-up logic
-        
-        using (IDbConnection db = new SqliteConnection(dbPath))
+        var existingUser = db.Table<User>().Where(u => u.username == username).FirstOrDefault();
+        if (existingUser != null)
         {
-            db.Open();
-            IDbCommand checkCmd = db.CreateCommand();
-            checkCmd.CommandText = "SELECT COUNT(*) FROM users WHERE username = @username";
-            AddParam(checkCmd, "@username", username);
-            int exists = Convert.ToInt32(checkCmd.ExecuteScalar());
-
-            if (exists > 0)
-            {
-                ShowMessage("Username already exists.");
-                return;
-            }
-
-            IDbCommand insertCmd = db.CreateCommand();
-            insertCmd.CommandText = "INSERT INTO users (username, password) VALUES (@u, @p)";
-            AddParam(insertCmd, "@u", username);
-            AddParam(insertCmd, "@p", hashed);
-            insertCmd.ExecuteNonQuery();
+            ShowMessage("Username already exists.");
+            return;
         }
-        
 
-        ShowMessage("Account created (mock)!");
+        db.Insert(new User { username = username, password = hashed });
+
+        ShowMessage("Account created!");
         ShowMainMenu();
     }
 
@@ -120,26 +105,12 @@ public class LoginUIManager : MonoBehaviour
 
         string hashed = HashPassword(password);
 
-        // COMMENTED OUT: SQLite login logic
-        
-        using (IDbConnection db = new SqliteConnection(dbPath))
-        {
-            db.Open();
-            IDbCommand cmd = db.CreateCommand();
-            cmd.CommandText = "SELECT COUNT(*) FROM users WHERE username = @u AND password = @p";
-            AddParam(cmd, "@u", username);
-            AddParam(cmd, "@p", hashed);
+        var user = db.Table<User>().Where(u => u.username == username && u.password == hashed).FirstOrDefault();
 
-            int match = Convert.ToInt32(cmd.ExecuteScalar());
-            if (match > 0)
-                ShowMessage("Login successful!");
-            else
-                ShowMessage("Invalid login.");
-        }
-        
-
-        // MOCKED LOGIN SUCCESS (you can fake "user123" if you want)
-        ShowMessage("Login simulated (no database connected)");
+        if (user != null)
+            ShowMessage("Login successful!");
+        else
+            ShowMessage("Invalid login.");
     }
 
     private void ShowMessage(string msg)
@@ -161,14 +132,12 @@ public class LoginUIManager : MonoBehaviour
         }
     }
 
-    // COMMENTED OUT: Not used without SQLite
-    
-    private void AddParam(IDbCommand cmd, string name, object value)
+    // Class that maps to 'users' table in your .sqlite file
+    public class User
     {
-        var param = cmd.CreateParameter();
-        param.ParameterName = name;
-        param.Value = value;
-        cmd.Parameters.Add(param);
+        [PrimaryKey, AutoIncrement]
+        public int id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
     }
-    
 }
