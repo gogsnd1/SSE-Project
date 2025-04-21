@@ -80,7 +80,7 @@ public class LoginUIManager : MonoBehaviour
         string hashed = HashPassword(password);
 
         // COMMENTED OUT: SQLite sign-up logic
-        /*
+        
         using (IDbConnection db = new SqliteConnection(dbPath))
         {
             db.Open();
@@ -101,7 +101,7 @@ public class LoginUIManager : MonoBehaviour
             AddParam(insertCmd, "@p", hashed);
             insertCmd.ExecuteNonQuery();
         }
-        */
+        
 
         ShowMessage("Account created (mock)!");
         ShowMainMenu();
@@ -121,7 +121,7 @@ public class LoginUIManager : MonoBehaviour
         string hashed = HashPassword(password);
 
         // COMMENTED OUT: SQLite login logic
-        /*
+        
         using (IDbConnection db = new SqliteConnection(dbPath))
         {
             db.Open();
@@ -136,7 +136,7 @@ public class LoginUIManager : MonoBehaviour
             else
                 ShowMessage("Invalid login.");
         }
-        */
+        
 
         // MOCKED LOGIN SUCCESS (you can fake "user123" if you want)
         ShowMessage("Login simulated (no database connected)");
@@ -162,7 +162,7 @@ public class LoginUIManager : MonoBehaviour
     }
 
     // COMMENTED OUT: Not used without SQLite
-    /*
+    
     private void AddParam(IDbCommand cmd, string name, object value)
     {
         var param = cmd.CreateParameter();
@@ -170,5 +170,5 @@ public class LoginUIManager : MonoBehaviour
         param.Value = value;
         cmd.Parameters.Add(param);
     }
-    */
+    
 }
