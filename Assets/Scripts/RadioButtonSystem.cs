@@ -3,9 +3,10 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public score= 0;
+int score= 0;
 public class RadioButtonSystem : MonoBehaviour
 {
+    
     private ToggleGroup toggleGroup;
 
     [Header("Correct Answer Settings")]
@@ -15,6 +16,8 @@ public class RadioButtonSystem : MonoBehaviour
     public AudioSource audioSource;  // Assign an AudioSource component
     public AudioClip correctAudio;   // Drag the correct sound
     public AudioClip incorrectAudio; // Drag the incorrect sound
+
+    public int score = 0; // score variable to keep track.
 
     [Header("Submit Button")]
     public Button submitButton;   // Drag your Submit button (Next arrow) here
