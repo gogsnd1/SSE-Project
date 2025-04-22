@@ -9,7 +9,7 @@ public class HorrorEventData
     public GameObject eventObject;
 
     [Header("Duration (seconds)")]
-    [Range(0f, 5f)] public float duration = 1f;
+    [Range(0f, 10f)] public float duration = 1f;
 }
 
 public class HorrorEventHandler : MonoBehaviour
