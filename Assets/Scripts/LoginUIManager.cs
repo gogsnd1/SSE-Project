@@ -5,6 +5,8 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using SQLite4Unity3d; // Required for SQLite4Unity3d support
+using System.Collections;
+
 
 public class LoginUIManager : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class LoginUIManager : MonoBehaviour
     public GameObject mainMenuPanel;
     public GameObject signUpPanel;
     public GameObject signInPanel;
+    public GameObject introPanel;
+
 
     // UI Input Fields
     public InputField signUpUsername;
@@ -21,6 +25,9 @@ public class LoginUIManager : MonoBehaviour
 
     // Feedback display
     public Text messageText;
+    public Text ErrorSignUp;
+    public Text ErrorSignIn;
+
 
     private SQLiteConnection db;
 
@@ -36,6 +43,11 @@ public class LoginUIManager : MonoBehaviour
     public void ShowMainMenu()
     {
         mainMenuPanel.SetActive(true);
+
+        Transform screen = mainMenuPanel.transform.Find("MainMenuScreen");
+        if (screen != null)
+        screen.gameObject.SetActive(true);
+
         signUpPanel.SetActive(false);
         signInPanel.SetActive(false);
         messageText.text = "";
@@ -66,13 +78,13 @@ public class LoginUIManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            ShowMessage("Please fill all fields.");
+            ShowMessage("Please fill all fields.", "signup");
             return;
         }
 
         if (password.Length < 10)
         {
-            ShowMessage("Password must be at least 10 characters.");
+            ShowMessage("Password must be at least 10 characters.", "signup");
             return;
         }
 
@@ -81,7 +93,7 @@ public class LoginUIManager : MonoBehaviour
         var existingUser = db.Table<users>().Where(u => u.user_username == username).FirstOrDefault();
         if (existingUser != null)
         {
-            ShowMessage("Username already exists.");
+            ShowMessage("Username already exists.", "signup");
             return;
         }
 
@@ -92,7 +104,18 @@ public class LoginUIManager : MonoBehaviour
             created_at = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         });
 
-        ShowMessage("Account created!");
+        ShowMessage("Account created!", "signup");
+        StartCoroutine(DelayedMainMenuReturn()); // Wait before switching
+    }
+    private IEnumerator DelayedMainMenuReturn()
+    {
+        yield return new WaitForSeconds(2f); // Wait 2 seconds before switching
+        // Hide Sign Up and Sign In panels just in case
+        signUpPanel.SetActive(false);
+        signInPanel.SetActive(false);
+
+        //Show main menu panel
+        mainMenuPanel.SetActive(true);
         ShowMainMenu();
     }
 
@@ -103,7 +126,7 @@ public class LoginUIManager : MonoBehaviour
 
         if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
         {
-            ShowMessage("Enter username and password.");
+            ShowMessage("Enter username and password.", "signin");
             return;
         }
 
@@ -114,14 +137,39 @@ public class LoginUIManager : MonoBehaviour
             .FirstOrDefault();
 
         if (user != null)
-            ShowMessage("Login successful!");
+        {
+            ShowMessage("Login successful!", "signin");
+            StartCoroutine(GoToIntroAfterDelay());
+        }
         else
-            ShowMessage("Invalid login.");
+        {
+            ShowMessage("Invalid login.", "signin");
+        }
     }
 
-    private void ShowMessage(string msg)
+    private IEnumerator GoToIntroAfterDelay()
+    {
+        yield return new WaitForSeconds(2f);
+
+        signInPanel.SetActive(false);
+        mainMenuPanel.SetActive(false);
+
+        if (introPanel != null)
+        {
+            introPanel.SetActive(true);
+        }
+    }
+
+
+    private void ShowMessage(string msg, string Panel)
     {
         messageText.text = msg;
+
+        if (Panel == "signup" && ErrorSignUp != null)
+        ErrorSignUp.text = msg;
+        else if (Panel == "signin" && ErrorSignIn != null)
+        ErrorSignIn.text = msg;
+
         Debug.Log("[LoginUIManager] " + msg);
     }
 
