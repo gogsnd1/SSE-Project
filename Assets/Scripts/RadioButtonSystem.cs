@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
+public score= 0;
 public class RadioButtonSystem : MonoBehaviour
 {
     private ToggleGroup toggleGroup;
@@ -61,6 +62,7 @@ public class RadioButtonSystem : MonoBehaviour
                 {
                     Debug.Log("Correct Answer!");
                     audioSource.PlayOneShot(correctAudio);
+                    score+=1;
                 }
                 else
                 {
