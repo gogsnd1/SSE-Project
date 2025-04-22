@@ -1,6 +1,16 @@
 using System.Collections;
 using UnityEngine;
 
+// Serializable class to hold both the GameObject and its duration
+[System.Serializable]
+public class HorrorEventData
+{
+    [Header("Horror Event Object")]
+    public GameObject eventObject;
+
+    [Header("Duration (seconds)")]
+    [Range(1f, 20f)] public float duration = 5f;
+}
 
 public class HorrorEventHandler : MonoBehaviour
 {
@@ -9,60 +19,53 @@ public class HorrorEventHandler : MonoBehaviour
     private int currentThreshold;
     private int lastEventIndex = -1;
 
-    [Header("Horror Events Array")]
-    public GameObject[] Events; // Drag & drop the 15 Event GameObjects in Inspector
+    [Header("Horror Events List")]
+    [SerializeField] private HorrorEventData[] horrorEvents;
 
     void Start()
     {
-        currentThreshold = maxThreshold; // Reset threshold at start
-
+        currentThreshold = maxThreshold;
     }
 
     // Call this between questions
     public void TryTriggerHorrorEvent()
     {
-        int roll = Random.Range(1, 11); // Random roll 1–10
+        int roll = Random.Range(1, 11); // Roll between 1–10
         Debug.Log($"[Horror Roll] Rolled: {roll} | Threshold: {currentThreshold}");
 
         if (roll > currentThreshold)
         {
             TriggerRandomHorrorEvent();
-            currentThreshold = maxThreshold; // Reset threshold after event
+            currentThreshold = maxThreshold; // Reset
         }
         else
         {
-            currentThreshold--; // Make event more likely next time
+            currentThreshold--; // Increase chance
         }
     }
 
     private void TriggerRandomHorrorEvent()
     {
-        if (Events.Length == 0)
+        if (horrorEvents.Length == 0)
         {
             Debug.LogWarning("No horror events assigned!");
             return;
         }
 
         int eventIndex;
-
-        // Pick a different event than last time
         do
         {
-            eventIndex = Random.Range(0, Events.Length);
-        } while (eventIndex == lastEventIndex && Events.Length > 1);
+            eventIndex = Random.Range(0, horrorEvents.Length);
+        } while (eventIndex == lastEventIndex && horrorEvents.Length > 1);
 
         lastEventIndex = eventIndex;
+        var selected = horrorEvents[eventIndex];
 
-        Debug.Log($"Triggering Horror Event #{eventIndex}");
-
-        GameObject selectedEvent = Events[eventIndex];
-        selectedEvent.SetActive(true); // Activate the GameObject
-
-        // Optional: Auto-disable after a delay
-        StartCoroutine(DisableAfter(selectedEvent, 10f));
+        Debug.Log($"[HorrorEventHandler] Triggering: {selected.eventObject.name} for {selected.duration} sec");
+        selected.eventObject.SetActive(true);
+        StartCoroutine(DisableAfter(selected.eventObject, selected.duration));
     }
 
-    // Reusable coroutine to disable an object after a few seconds
     IEnumerator DisableAfter(GameObject obj, float time)
     {
         yield return new WaitForSeconds(time);
