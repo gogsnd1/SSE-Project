@@ -29,7 +29,7 @@ public class ScoreTracking : MonoBehaviour
         UpdateScoreText();
     }
 
-    public void AddScore(int amount = 1)
+    public void AddScore(int amount = 375)
     {
         score += amount;
         UpdateScoreText();
