@@ -20,8 +20,7 @@ public class RadioButtonSystem : MonoBehaviour
     [Header("Submit Button")]
     public Button submitButton;   // Drag your Submit button (Next arrow) here
 
-    public ScoreTracking score; // score for questions
-    void Start()
+       void Start()
     {
         toggleGroup = GetComponent<ToggleGroup>();
         submitButton.gameObject.SetActive(false);  // Hide submit at start
@@ -64,7 +63,7 @@ public class RadioButtonSystem : MonoBehaviour
                 {
                     Debug.Log("Correct Answer!");
                     audioSource.PlayOneShot(correctAudio);
-                    score.IncrementScore();
+                    ScoreTracking.Instance.AddScore();
                 }
                 else
                 {
