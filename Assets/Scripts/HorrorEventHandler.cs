@@ -59,7 +59,7 @@ public class HorrorEventHandler : MonoBehaviour
         selectedEvent.SetActive(true); // Activate the GameObject
 
         // Optional: Auto-disable after a delay
-        StartCoroutine(DisableAfter(selectedEvent, 4f));
+        StartCoroutine(DisableAfter(selectedEvent, 10f));
     }
 
     // Reusable coroutine to disable an object after a few seconds
