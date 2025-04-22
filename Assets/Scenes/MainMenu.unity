@@ -554,7 +554,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1734723041}
+      - m_Target: {fileID: 629002171}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -8409,7 +8409,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30680471}
+      - m_Target: {fileID: 138108173}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -8674,7 +8674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -358, y: 288}
+  m_AnchoredPosition: {x: -358, y: 265}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1414607252
@@ -8697,11 +8697,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Not \u201Cvintage.\u201D Not \u201Cseasoned.\u201D\nJerry's just Geriatric.\nThe
-    kind of old that wears socks with sandals and says \"the internet\" like it's
-    a place you drive to.\n\nHe wasn\u2019t always like this.\nBack in the day, Jerry
-    fixed vacuum tubes with a screwdriver and a prayer.\nBut now?\nHe can\u2019t
-    even figure out where his email goes when he hits \u201Csend.\u201D\n\nUnemployed.\nUninsured.\nAnd
+  m_text: "Jerry's Fucking Old.\nNot \u201Cvintage.\u201D Not \u201Cseasoned.\u201D\nJerry's
+    just Geriatric.\nThe kind of old that wears socks with sandals and says \"the
+    internet\" like it's a place you drive to.\n\nHe wasn\u2019t always like this.\nBack
+    in the day, Jerry fixed vacuum tubes with a screwdriver and a prayer.\nBut now?\nHe
+    can\u2019t even figure out where his email goes when he hits \u201Csend.\u201D\n\nUnemployed.\nUninsured.\nAnd
     unbelievably behind on rent.\n\nHe\u2019s out of options.\nNobody wants to hire
     a man whose r\xE9sum\xE9 is handwritten and smells like Bengay.\nHe tried gig
     work once. Got banned from Uber for asking passengers if they remembered M.A.S.H.\n\nSo
@@ -10983,7 +10983,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30680471}
+      - m_Target: {fileID: 138108173}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -11368,7 +11368,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1734723041}
+      - m_Target: {fileID: 629002171}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -12687,7 +12687,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -358, y: 288}
+  m_AnchoredPosition: {x: -358, y: 303}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844946076
@@ -12724,10 +12724,13 @@ MonoBehaviour:
     sleeping.\nStopped eating.\nThen... stopped existing.\n\nNow, what\u2019s left
     is something else.\nThe Freak.\n\nPale. Crooked. Hollow-eyed.\nTwisted by regret
     and static.\nHe lives inside the walls of devices now, lurking between login
-    screens and signal noise.\nHe isn\u2019t malicious.\nHe\u2019s desperate.\nTrying
-    to stop others before it happens again.\n\nThat\u2019s why he\u2019s here now.\nIn
-    Jerry\u2019s apartment.\nWatching as the old man hovers his mouse over that same
-    quiz.\nThe one that ended his life.\nThe one still spreading.\nStill taking."
+    screens and signal noise.\nHe is the ghost of a data breach made flesh \u2014
+    an embodiment of caution, corrupted by trauma and failure.\nHe doesn\u2019t want
+    revenge.\nHe wants prevention.\n\nBecause if he can stop one more soul from clicking
+    \u201CAccept,\u201D\nFrom giving away what can\u2019t be returned\u2014\nHe isn\u2019t
+    malicious. He\u2019s desperate.\n\nThat\u2019s why he\u2019s here now.\nIn Jerry\u2019s
+    apartment.\nWatching as the old man hovers his mouse over that same quiz.\nThe
+    one that ended his life."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13000,7 +13003,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 30680471}
+      - m_Target: {fileID: 138108173}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -13181,7 +13184,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1734723041}
+      - m_Target: {fileID: 629002171}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
