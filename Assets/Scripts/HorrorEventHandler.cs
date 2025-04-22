@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+
 public class HorrorEventHandler : MonoBehaviour
 {
     [Header("Horror Event Settings")]
@@ -14,6 +15,7 @@ public class HorrorEventHandler : MonoBehaviour
     void Start()
     {
         currentThreshold = maxThreshold; // Reset threshold at start
+
     }
 
     // Call this between questions
