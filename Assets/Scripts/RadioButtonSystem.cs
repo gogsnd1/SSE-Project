@@ -62,7 +62,7 @@ public class RadioButtonSystem : MonoBehaviour
                 {
                     Debug.Log("Correct Answer!");
                     audioSource.PlayOneShot(correctAudio);
-                    score+=1;
+                    score++;
                 }
                 else
                 {
