@@ -1,9 +1,9 @@
 using UnityEngine;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreTracking : MonoBehaviour
 {
-    public static ScoreManager Instance { get; private set; }
+    public static ScoreTracking Instance { get; private set; }
 
     public int score = 0;
 
