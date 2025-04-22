@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-int score= 0;
+
 public class RadioButtonSystem : MonoBehaviour
 {
     
