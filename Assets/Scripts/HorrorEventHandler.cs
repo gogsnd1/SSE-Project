@@ -9,7 +9,7 @@ public class HorrorEventData
     public GameObject eventObject;
 
     [Header("Duration (seconds)")]
-    [Range(1f, 20f)] public float duration = 5f;
+    [Range(0f, 10f)] public float duration = 1f;
 }
 
 public class HorrorEventHandler : MonoBehaviour
@@ -30,7 +30,7 @@ public class HorrorEventHandler : MonoBehaviour
     // Call this between questions
     public void TryTriggerHorrorEvent()
     {
-        int roll = Random.Range(1, 11); // Roll between 1–10
+        int roll = Random.Range(1, 11); // Roll between 1ï¿½10
         Debug.Log($"[Horror Roll] Rolled: {roll} | Threshold: {currentThreshold}");
 
         if (roll > currentThreshold)
