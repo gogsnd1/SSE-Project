@@ -1,69 +1,71 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-// Serializable class to hold both the GameObject and its duration
 [System.Serializable]
 public class HorrorEventData
 {
-    [Header("Horror Event Object")]
     public GameObject eventObject;
-
-    [Header("Duration (seconds)")]
     [Range(0f, 10f)] public float duration = 1f;
 }
 
 public class HorrorEventHandler : MonoBehaviour
 {
-    [Header("Horror Event Settings")]
+    [Header("Threshold Settings")]
     [SerializeField] private int maxThreshold = 10;
     private int currentThreshold;
-    private int lastEventIndex = -1;
 
     [Header("Horror Events List")]
     [SerializeField] private HorrorEventData[] horrorEvents;
 
+    private List<int> unusedEventIndices = new List<int>();
+
     void Start()
     {
         currentThreshold = maxThreshold;
+        ResetEventPool();
     }
 
-    // Call this between questions
     public void TryTriggerHorrorEvent()
     {
-        int roll = Random.Range(1, 11); // Roll between 1�10
+        int roll = Random.Range(1, 11);
         Debug.Log($"[Horror Roll] Rolled: {roll} | Threshold: {currentThreshold}");
 
         if (roll > currentThreshold)
         {
             TriggerRandomHorrorEvent();
-            currentThreshold = maxThreshold; // Reset
+            currentThreshold = maxThreshold;
         }
         else
         {
-            currentThreshold--; // Increase chance
+            currentThreshold--;
         }
     }
 
     private void TriggerRandomHorrorEvent()
     {
-        if (horrorEvents.Length == 0)
+        if (unusedEventIndices.Count == 0)
         {
-            Debug.LogWarning("No horror events assigned!");
-            return;
+            Debug.Log("All events used. Resetting event pool.");
+            ResetEventPool();
         }
 
-        int eventIndex;
-        do
-        {
-            eventIndex = Random.Range(0, horrorEvents.Length);
-        } while (eventIndex == lastEventIndex && horrorEvents.Length > 1);
+        int randomIndex = Random.Range(0, unusedEventIndices.Count);
+        int eventIndex = unusedEventIndices[randomIndex];
+        unusedEventIndices.RemoveAt(randomIndex);
 
-        lastEventIndex = eventIndex;
         var selected = horrorEvents[eventIndex];
-
         Debug.Log($"[HorrorEventHandler] Triggering: {selected.eventObject.name} for {selected.duration} sec");
+
         selected.eventObject.SetActive(true);
         StartCoroutine(DisableAfter(selected.eventObject, selected.duration));
+    }
+
+    private void ResetEventPool()
+    {
+        unusedEventIndices.Clear();
+        for (int i = 0; i < horrorEvents.Length; i++)
+            unusedEventIndices.Add(i);
     }
 
     IEnumerator DisableAfter(GameObject obj, float time)
