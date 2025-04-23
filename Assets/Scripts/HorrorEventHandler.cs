@@ -50,7 +50,7 @@ public class HorrorEventHandler : MonoBehaviour
     // Call this when a player answers incorrectly to raise the odds
     public void IncreaseChanceOnFailure()
     {
-        currentThreshold = Mathf.Max(currentThreshold - 1, 0);
+        currentThreshold = Mathf.Max(currentThreshold - 2, 0);
         Debug.Log($"[HorrorEventHandler] Increased chance! New threshold: {currentThreshold}");
     }
 
