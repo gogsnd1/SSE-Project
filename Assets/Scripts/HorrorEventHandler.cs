@@ -15,7 +15,7 @@ public class HorrorEventData
 public class HorrorEventHandler : MonoBehaviour
 {
     [Header("Horror Event Settings")]
-    [SerializeField] private int maxThreshold = 10;
+    [SerializeField] private int maxThreshold = 20;
     private int currentThreshold;
     private int lastEventIndex = -1;
 
