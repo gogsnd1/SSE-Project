@@ -25,7 +25,7 @@ public class Leaderboard : MonoBehaviour
         string output = "Leaderboard:\n";
 
         var topScores = db.Query<ScoreEntry>(
-            @"SELECT users.user_username AS username, scores.score_value AS score 
+            @"SELECT users.user_username AS username, scores.score AS score 
               FROM scores 
               JOIN users ON scores.user_id = users.user_id 
               ORDER BY score DESC 
