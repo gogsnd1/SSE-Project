@@ -2,10 +2,14 @@ using UnityEngine;
 using SQLite4Unity3d;
 using System;
 using System.IO;
+using static LoginUIManager;
+using System.Linq;
+using System.Collections.Generic;
 
 public class ScoreUploader : MonoBehaviour
 {
     private SQLiteConnection db;
+    public List<scores> uploadedScores = new List<scores>();
 
     void Start()
     {
@@ -31,7 +35,7 @@ public class ScoreUploader : MonoBehaviour
         scores newScore = new scores
         {
             user_id = userId,
-            score_value = finalScore,
+            score = finalScore,
             score_date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")
         };
 
@@ -50,7 +54,22 @@ public class ScoreUploader : MonoBehaviour
         [PrimaryKey, AutoIncrement]
         public int score_id { get; set; }
         public int user_id { get; set; }
-        public int score_value { get; set; }
+        public int score { get; set; }
         public string score_date { get; set; }
     }
+
+    public class users
+    {
+        [PrimaryKey, AutoIncrement]
+        public int user_id { get; set; }
+        public string username { get; set; }
+        public string password { get; set; }
+    }
+
+    public string GetUsernameById(int userId)
+    {
+        var user = db.Table<users>().FirstOrDefault(u => u.user_id == userId);
+        return user != null ? user.username : "Unknown";
+    }
+
 }
