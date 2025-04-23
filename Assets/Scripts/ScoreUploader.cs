@@ -36,6 +36,12 @@ public class ScoreUploader : MonoBehaviour
         Debug.Log($"Uploaded score: {finalScore} for user_id: {userId}");
     }
 
+    public void OnSubmitScore()
+{
+    UploadFinalScore(); // Call your score-saving method
+    ScoreTracking.Instance.ResetScore(); // Optional: reset after saving
+}
+
     public class scores
     {
         [PrimaryKey, AutoIncrement]
