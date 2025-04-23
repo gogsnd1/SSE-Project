@@ -28,7 +28,7 @@ public class LoginUIManager : MonoBehaviour
     public Text ErrorSignUp;
     public Text ErrorSignIn;
 
-
+    public static int LoggedInUserId = -1;
     private SQLiteConnection db;
 
     void Start()
@@ -138,6 +138,7 @@ public class LoginUIManager : MonoBehaviour
 
         if (user != null)
         {
+            LoggedInUserId = user.user_id;
             ShowMessage("Login successful!", "signin");
             StartCoroutine(GoToIntroAfterDelay());
         }
