@@ -10,6 +10,12 @@ public class PauseMenu : MonoBehaviour
     public AudioMixerSnapshot gameplaySnapshot;
     public AudioMixerSnapshot pausedSnapshot;
 
+    private AudioSource[] allAudioSources;
+
+    void Start()
+    {
+        allAudioSources = FindObjectsByType<AudioSource>(FindObjectsSortMode.None);
+    }
 
     void Update()
     {
@@ -30,6 +36,12 @@ public class PauseMenu : MonoBehaviour
 
         gameplaySnapshot.TransitionTo(0.1f);
 
+        // Resume all audio sources
+        foreach (AudioSource audio in allAudioSources)
+        {
+            audio.UnPause();
+        }
+
         lookScript.enabled = true;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -42,6 +54,13 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
 
         pausedSnapshot.TransitionTo(0.1f);
+
+        // Pause all audio sources
+        foreach (AudioSource audio in allAudioSources)
+        {
+            if (audio.isPlaying)
+                audio.Pause();
+        }
 
         lookScript.enabled = false;
         Cursor.lockState = CursorLockMode.None;
