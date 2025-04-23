@@ -13,7 +13,7 @@ public class ScoreUploader : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(gameObject);  // Add this line
+        DontDestroyOnLoad(gameObject);
 
         string dbPath = Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite");
         db = new SQLiteConnection(dbPath);
