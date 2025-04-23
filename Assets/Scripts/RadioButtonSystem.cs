@@ -20,6 +20,9 @@ public class RadioButtonSystem : MonoBehaviour
     [Header("Submit Button")]
     public Button submitButton;   // Drag your Submit button (Next arrow) here
 
+    [Header("Horror Event System")]
+    public HorrorEventHandler horrorEventHandler; // Reference to the event system
+
        void Start()
     {
         toggleGroup = GetComponent<ToggleGroup>();
@@ -69,6 +72,12 @@ public class RadioButtonSystem : MonoBehaviour
                 {
                     Debug.Log("Incorrect Answer.");
                     audioSource.PlayOneShot(incorrectAudio);
+
+                    // Only trigger horror chance on wrong answer
+                    if (horrorEventHandler != null)
+                    {
+                        horrorEventHandler.TryTriggerHorrorEvent();
+                    }
                 }
 
                 // Lock submission
