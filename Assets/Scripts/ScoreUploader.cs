@@ -9,10 +9,13 @@ public class ScoreUploader : MonoBehaviour
 
     void Start()
     {
+        DontDestroyOnLoad(gameObject);  // Add this line
+
         string dbPath = Path.Combine(Application.streamingAssetsPath, "gamedatabase.sqlite");
-        db = new SQLiteConnection(dbPath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.Create);
-        db.CreateTable<scores>(); // Make sure the table exists
+        db = new SQLiteConnection(dbPath);
+        db.CreateTable<scores>();
     }
+
 
     public void UploadFinalScore()
     {
