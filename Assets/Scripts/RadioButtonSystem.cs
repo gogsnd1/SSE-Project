@@ -9,6 +9,10 @@ public class RadioButtonSystem : MonoBehaviour
     
     private ToggleGroup toggleGroup;
 
+    [Header("Horror Integration")]
+    public HorrorEventHandler horrorHandler;  // Assign this in the Inspector
+
+
     [Header("Correct Answer Settings")]
     public Toggle correctToggle;  // Drag the correct toggle here
 
@@ -69,6 +73,11 @@ public class RadioButtonSystem : MonoBehaviour
                 {
                     Debug.Log("Incorrect Answer.");
                     audioSource.PlayOneShot(incorrectAudio);
+                    if (horrorHandler != null)
+                {
+                // Increase horror chance on incorrect answer
+                horrorHandler.IncreaseChanceOnFailure();
+                }
                 }
 
                 // Lock submission

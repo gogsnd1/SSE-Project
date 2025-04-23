@@ -17,6 +17,8 @@ public class MonitorInteractionWithCursor : MonoBehaviour
     private Vector2 cursorPosition;
 
     [Header("Cursor Settings")]
+    [SerializeField][Range(0.1f, 1f)] float cursorSize = 1f;
+
     [SerializeField][Range(0f, 1f)] float cursorSensitivity = 0.5f;
     [SerializeField][Range(0f, 10f)] float edgeBuffer = 5f;
 
@@ -75,6 +77,8 @@ public class MonitorInteractionWithCursor : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = (isCursorActive ? CursorLockMode.None : CursorLockMode.Locked);
         customCursor.gameObject.SetActive(isCursorActive);
+        customCursor.localScale = Vector3.one * cursorSize;
+
 
         if (isCursorActive)
         {

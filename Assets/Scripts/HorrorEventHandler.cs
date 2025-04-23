@@ -9,7 +9,7 @@ public class HorrorEventData
     public GameObject eventObject;
 
     [Header("Duration (seconds)")]
-    [Range(0f, 10f)] public float duration = 1f;
+    [Range(0f, 20f)] public float duration = 1f;
 }
 
 public class HorrorEventHandler : MonoBehaviour
@@ -71,4 +71,11 @@ public class HorrorEventHandler : MonoBehaviour
         yield return new WaitForSeconds(time);
         obj.SetActive(false);
     }
+
+    public void IncreaseChanceOnFailure(int amount = 2)
+{
+    currentThreshold = Mathf.Max(0, currentThreshold - amount);
+    Debug.Log($"[HorrorEventHandler] Increased chance of horror event. New threshold: {currentThreshold}");
+}
+
 }
